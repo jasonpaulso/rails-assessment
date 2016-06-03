@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
-        #  :omniauthable, :omniauth_providers => [:facebook]
+
   has_many :user_shows
   has_many :shows, through: :user_shows
   has_many :actors, through: :shows
@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name   # assuming the user model has a name
-      # user.image = auth.info.image # assuming the user model has an image
+      user.image = auth.info.image # assuming the user model has an image
     end
   end
   def self.new_with_session(params, session)
