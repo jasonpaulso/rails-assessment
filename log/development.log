@@ -12,3 +12,225 @@ Cannot render console from 10.0.1.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.
 Processing by Rails::InfoController#properties as */*
   Rendered /Users/Jason/.rvm/gems/ruby-2.2.3@global/gems/railties-4.2.6/lib/rails/templates/rails/info/properties.html.erb (0.3ms)
 Completed 200 OK in 51ms (Views: 30.0ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateShows (20160602220120)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "shows" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "actor_id" integer, "network_id" integer) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160602220120"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to CreateUser (20160602220143)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160602220143"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateNetworks (20160602220243)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "networks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160602220243"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateActors (20160602220259)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "actors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160602220259"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "actors" ("name") VALUES (?)  [["name", "Jason"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mActor Load (0.2ms)[0m  SELECT  "actors".* FROM "actors"  ORDER BY "actors"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.4ms)[0m  INSERT INTO "shows" ("title") VALUES (?)  [["title", "A Great Show!"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[36mActor Load (0.1ms)[0m  [1mSELECT  "actors".* FROM "actors"  ORDER BY "actors"."id" ASC LIMIT 1[0m
+  [1m[35mActor Load (0.1ms)[0m  SELECT  "actors".* FROM "actors"  ORDER BY "actors"."id" ASC LIMIT 1
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT "shows".* FROM "shows" WHERE "shows"."actor_id" = ?[0m  [["actor_id", 1]]
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1
+  [1m[36mShow Load (0.2ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "shows" SET "actor_id" = ? WHERE "shows"."id" = ?  [["actor_id", 1], ["id", 1]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mNetwork Load (1.8ms)[0m  SELECT  "networks".* FROM "networks"  ORDER BY "networks"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "networks" ("name") VALUES (?)  [["name", "SFTV"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "shows" SET "network_id" = ? WHERE "shows"."id" = ?[0m  [["network_id", 1], ["id", 1]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT  "networks".* FROM "networks"  ORDER BY "networks"."id" ASC LIMIT 1[0m
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT "networks".* FROM "networks" INNER JOIN "shows" ON "networks"."id" = "shows"."network_id" WHERE "shows"."actor_id" = ?  [["actor_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.2ms)[0m  INSERT INTO "users" ("name") VALUES (?)  [["name", "me"]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUserShows (20160602222308)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "user_shows" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "show_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160602222308"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.3ms)[0m  SELECT "shows".* FROM "shows" INNER JOIN "user_shows" ON "shows"."user_show_id" = "user_shows"."id" WHERE "user_shows"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUserShow Load (0.2ms)[0m  [1mSELECT "user_shows".* FROM "user_shows" WHERE "user_shows"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.4ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."user_id" = ?  [[nil, 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUserShow Load (0.9ms)[0m  SELECT "user_shows".* FROM "user_shows" WHERE "user_shows"."user_id" = ?  [["user_id", 1]]
+  [1m[36mShow Load (0.4ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUserShow Load (0.4ms)[0m  [1mSELECT "user_shows".* FROM "user_shows" WHERE "user_shows"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUserShow Load (0.1ms)[0m  [1mSELECT "user_shows".* FROM "user_shows" WHERE "user_shows"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mShow Load (4.8ms)[0m  SELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "user_shows" ("user_id", "show_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 1], ["show_id", 1], ["created_at", "2016-06-02 22:56:35.246607"], ["updated_at", "2016-06-02 22:56:35.246607"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1
+  [1m[36mUserShow Load (0.1ms)[0m  [1mSELECT  "user_shows".* FROM "user_shows"  ORDER BY "user_shows"."id" ASC LIMIT 1[0m
+  [1m[35mUserShow Load (0.1ms)[0m  SELECT "user_shows".* FROM "user_shows" WHERE "user_shows"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.2ms)[0m  SELECT "shows".* FROM "shows" INNER JOIN "user_shows" ON "shows"."id" = "user_shows"."show_id" WHERE "user_shows"."user_id" = ?  [["user_id", 1]]
+  [1m[36mActor Load (0.7ms)[0m  [1mSELECT  "actors".* FROM "actors"  ORDER BY "actors"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."actor_id" = ?  [["actor_id", 1]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[36mShow Load (0.2ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35mNetwork Load (0.4ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT "shows".* FROM "shows" INNER JOIN "user_shows" ON "shows"."id" = "user_shows"."show_id" WHERE "user_shows"."user_id" = ?  [["user_id", 1]]
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mActor Load (0.4ms)[0m  SELECT  "actors".* FROM "actors"  ORDER BY "actors"."id" ASC LIMIT 1
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT "shows".* FROM "shows" WHERE "shows"."actor_id" = ?[0m  [["actor_id", 1]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mNetwork Load (0.4ms)[0m  [1mSELECT  "networks".* FROM "networks"  ORDER BY "networks"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."network_id" = ?  [["network_id", 1]]
+  [1m[36mActor Load (0.4ms)[0m  [1mSELECT "actors".* FROM "actors" INNER JOIN "shows" ON "actors"."show_id" = "shows"."id" WHERE "shows"."network_id" = ?[0m  [["network_id", 1]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateShowActors (20160602231252)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "show_actors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "actor_id" integer, "show_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160602231252"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActor Load (0.1ms)[0m  [1mSELECT  "actors".* FROM "actors"  ORDER BY "actors"."id" ASC LIMIT 1[0m
+  [1m[35mActor Load (0.2ms)[0m  SELECT  "actors".* FROM "actors"  ORDER BY "actors"."id" ASC LIMIT 1
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks"  ORDER BY "networks"."id" ASC LIMIT 1
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mShowActor Load (0.2ms)[0m  SELECT "show_actors".* FROM "show_actors" WHERE "show_actors"."actor_id" = ?  [["actor_id", 1]]
+  [1m[36mActor Load (0.1ms)[0m  [1mSELECT  "actors".* FROM "actors"  ORDER BY "actors"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."actor_id" = ?  [["actor_id", 1]]
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT "networks".* FROM "networks" INNER JOIN "shows" ON "networks"."id" = "shows"."network_id" WHERE "shows"."actor_id" = ?[0m  [["actor_id", 1]]
+  [1m[35mNetwork Load (0.6ms)[0m  SELECT  "networks".* FROM "networks"  ORDER BY "networks"."id" ASC LIMIT 1
+  [1m[36mActor Load (0.3ms)[0m  [1mSELECT "actors".* FROM "actors" INNER JOIN "shows" ON "actors"."show_id" = "shows"."id" WHERE "shows"."network_id" = ?[0m  [["network_id", 1]]
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1
+  [1m[36mNetwork Load (0.2ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mShow Load (0.2ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."network_id" = ?  [["network_id", 1]]
+  [1m[36mActor Load (0.4ms)[0m  [1mSELECT "actors".* FROM "actors" WHERE "actors"."show_id" = ?[0m  [[nil, 1]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mActor Load (0.4ms)[0m  [1mSELECT "actors".* FROM "actors" WHERE "actors"."show_id" = ?[0m  [[nil, 1]]
+  [1m[36mActor Load (0.1ms)[0m  [1mSELECT  "actors".* FROM "actors"  ORDER BY "actors"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT "shows".* FROM "shows" INNER JOIN "show_actors" ON "shows"."id" = "show_actors"."show_id" WHERE "show_actors"."actor_id" = ?  [["actor_id", 1]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "show_actors" ("actor_id", "show_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["actor_id", 1], ["show_id", 1], ["created_at", "2016-06-02 23:27:36.369221"], ["updated_at", "2016-06-02 23:27:36.369221"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT  "networks".* FROM "networks"  ORDER BY "networks"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.4ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."network_id" = ?  [["network_id", 1]]
+  [1m[36mActor Load (0.2ms)[0m  [1mSELECT "actors".* FROM "actors" INNER JOIN "show_actors" ON "actors"."id" = "show_actors"."actor_id" INNER JOIN "shows" ON "show_actors"."show_id" = "shows"."id" WHERE "shows"."network_id" = ?[0m  [["network_id", 1]]
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1
+  [1m[36mActor Load (0.2ms)[0m  [1mSELECT "actors".* FROM "actors" INNER JOIN "show_actors" ON "actors"."id" = "show_actors"."actor_id" WHERE "show_actors"."show_id" = ?[0m  [["show_id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mShow Load (0.4ms)[0m  [1mSELECT "shows".* FROM "shows" INNER JOIN "user_shows" ON "shows"."id" = "user_shows"."show_id" WHERE "user_shows"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.2ms)[0m  SELECT "shows".* FROM "shows" INNER JOIN "user_shows" ON "shows"."id" = "user_shows"."show_id" WHERE "user_shows"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mActor Load (0.2ms)[0m  SELECT "actors".* FROM "actors" INNER JOIN "show_actors" ON "actors"."id" = "show_actors"."actor_id" INNER JOIN "shows" ON "show_actors"."show_id" = "shows"."id" INNER JOIN "user_shows" ON "shows"."id" = "user_shows"."show_id" WHERE "user_shows"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mNetwork Load (0.2ms)[0m  SELECT "networks".* FROM "networks" INNER JOIN "shows" ON "networks"."id" = "shows"."network_id" INNER JOIN "user_shows" ON "shows"."id" = "user_shows"."show_id" WHERE "user_shows"."user_id" = ?  [["user_id", 1]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "actors" ("name") VALUES (?)[0m  [["name", "Anton"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "show_actors" ("show_id", "actor_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["show_id", 1], ["actor_id", 2], ["created_at", "2016-06-02 23:33:05.767898"], ["updated_at", "2016-06-02 23:33:05.767898"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mActor Load (0.2ms)[0m  SELECT "actors".* FROM "actors" INNER JOIN "show_actors" ON "actors"."id" = "show_actors"."actor_id" WHERE "show_actors"."show_id" = ?  [["show_id", 1]]
+  [1m[36mShow Load (0.2ms)[0m  [1mSELECT "shows".* FROM "shows" INNER JOIN "show_actors" ON "shows"."id" = "show_actors"."show_id" WHERE "show_actors"."actor_id" = ?[0m  [["actor_id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT "networks".* FROM "networks" INNER JOIN "shows" ON "networks"."id" = "shows"."network_id" INNER JOIN "user_shows" ON "shows"."id" = "user_shows"."show_id" WHERE "user_shows"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddDateAndTimeToShows (20160602233707)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "shows" ADD "day" varchar[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "shows" ADD "time" time
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160602233707"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "shows" SET "time" = ? WHERE "shows"."id" = ?[0m  [["time", "2000-01-01 09:00:00.000000"], ["id", 1]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mShow Load (0.9ms)[0m  [1mSELECT "shows".* FROM "shows" WHERE "shows"."time" = ?[0m  [["time", "9:00"]]
+  [1m[35mShow Load (0.2ms)[0m  SELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1
+  [1m[36mShow Load (0.4ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mShow Load (0.3ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.2ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."time" = ?  [["time", "09:00"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to ChangeTimeColumnInShows (20160603000449)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TEMPORARY TABLE "ashows" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "actor_id" integer, "network_id" integer, "day" varchar, "time" time) [0m
+  [1m[35m (0.4ms)[0m  SELECT * FROM "shows"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "ashows" ("id","title","actor_id","network_id","day","time") VALUES (1, 'A Great Show!', 1, 1, NULL, '2000-01-01 09:00:00.000000')[0m
+  [1m[35m (0.5ms)[0m  DROP TABLE "shows"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "shows" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "actor_id" integer, "network_id" integer, "day" varchar, "time" varchar) [0m
+  [1m[35m (0.0ms)[0m  SELECT * FROM "ashows"
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "shows" ("id","title","actor_id","network_id","day","time") VALUES (1, 'A Great Show!', 1, 1, NULL, '2000-01-01 09:00:00.000000')[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "ashows"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160603000449"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."time" = ?  [["time", "9:00"]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows"  ORDER BY "shows"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "shows" SET "time" = ? WHERE "shows"."id" = ?  [["time", "8:00"], ["id", 1]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."time" = ?  [["time", "8:00"]]
