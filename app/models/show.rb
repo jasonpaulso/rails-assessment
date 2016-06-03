@@ -8,6 +8,10 @@ class Show < ActiveRecord::Base
   has_many :actors, through: :show_actors
 
   def rating
-    user_shows.sum(:rating) / user_shows.count
+    if user_shows.empty?
+      return "Not yet rated"
+    else
+      ((user_shows.sum(:rating) / user_shows.count)*2).floor.to_f / 2
+    end
   end
 end
