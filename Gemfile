@@ -29,7 +29,8 @@ gem 'tod'
 gem 'friendly_id', '~> 5.1.0'
 #devise
 gem 'devise'
-#rubygems
+#omniauth
+gem 'omniauth-facebook'
 
 
 
