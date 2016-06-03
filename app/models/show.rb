@@ -6,4 +6,8 @@ class Show < ActiveRecord::Base
   belongs_to :network
   has_many :show_actors
   has_many :actors, through: :show_actors
+
+  def rating
+    user_shows.sum(:rating) / user_shows.count
+  end
 end
