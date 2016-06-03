@@ -5,3 +5,11 @@ So, here is my rails assessment project.... I'm not sure what it will be about b
 
 OK, I've decided to make my app a TV Tracker. It will allow me to add the shows that I watch to a db. I can then sort the db by actor, network, show, date, and time.
 
+
+Points to consider:
+
+-sorting shows by time.
+    e.g. Show.where(time:"8:00").where(day:"Monday")
+-show shows on a certain network at a certain time
+    e.g. Network.first.shows.where(time:"8:00")
+
