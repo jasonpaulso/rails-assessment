@@ -12,7 +12,8 @@
 <%=link_to "Home", root_path%>
 <%=link_to "View Shows", shows_path%>
 <%=link_to "View Networks", networks_path%>
-<h1>Welcome to the TV Tracker!</h1>
+<%=link_to "Sign Up", new_user_registration_path%>
+<h1>Welcome to the TV Tracker <%=current_user.email if current_user%>!</h1>
 
 <%= yield %>
 
