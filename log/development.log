@@ -234,3 +234,13 @@ Migrating to ChangeTimeColumnInShows (20160603000449)
   [1m[35mSQL (0.3ms)[0m  UPDATE "shows" SET "time" = ? WHERE "shows"."id" = ?  [["time", "8:00"], ["id", 1]]
   [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
   [1m[35mShow Load (0.1ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."time" = ?  [["time", "8:00"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "shows" ("title", "day", "time") VALUES (?, ?, ?)  [["title", "Another Show"], ["day", "Monday"], ["time", "8:00"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."time" = ?  [["time", "8:00"]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT "shows".* FROM "shows" WHERE "shows"."time" = ? AND "shows"."day" = ?[0m  [["time", "8:00"], ["day", "Monday"]]
+  [1m[35mNetwork Load (0.5ms)[0m  SELECT  "networks".* FROM "networks"  ORDER BY "networks"."id" ASC LIMIT 1
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT  "networks".* FROM "networks"  ORDER BY "networks"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."network_id" = ?  [["network_id", 1]]
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT  "networks".* FROM "networks"  ORDER BY "networks"."id" ASC LIMIT 1[0m
+  [1m[35mShow Load (0.1ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."network_id" = ? AND "shows"."time" = ?  [["network_id", 1], ["time", "8:00"]]
