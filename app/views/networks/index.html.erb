@@ -1,0 +1,7 @@
+<h1>Welcome to the Networks Page!</h1>
+
+<ul>
+  <% @networks.each do |network| %>
+    <li><%=link_to network.name, network_path(network)%></li>
+    <%end%>
+</ul>
