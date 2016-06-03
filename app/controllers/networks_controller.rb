@@ -3,6 +3,6 @@ class NetworksController < ApplicationController
     @networks = Network.all
   end
   def show
-    @network = Network.find(params[:id])
+    @network = Network.find_by(slug:(params[:id]))
   end
 end

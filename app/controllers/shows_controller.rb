@@ -3,6 +3,6 @@ class ShowsController < ApplicationController
     @shows = Show.all
   end
   def show
-    @show = Show.find(params[:id])
+    @show = Show.find_by(slug:(params[:id]))
   end
 end
