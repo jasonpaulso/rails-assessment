@@ -16364,3 +16364,156 @@ Processing by ShowsController#show as HTML
   [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "user_shows" WHERE "user_shows"."show_id" = ?[0m  [["show_id", 1]]
   Rendered shows/show.html.erb within layouts/application (4.9ms)
 Completed 200 OK in 31ms (Views: 29.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 73.222.181.208 at 2016-06-03 22:28:13 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticController#index as HTML
+  Rendered static/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 421ms (Views: 414.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/networks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 73.222.181.208 at 2016-06-03 22:28:14 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 73.222.181.208 at 2016-06-03 22:28:14 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 73.222.181.208 at 2016-06-03 22:28:14 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/shows.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 73.222.181.208 at 2016-06-03 22:28:14 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 73.222.181.208 at 2016-06-03 22:28:14 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/networks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 73.222.181.208 at 2016-06-03 22:28:14 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/static.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 73.222.181.208 at 2016-06-03 22:28:14 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 73.222.181.208 at 2016-06-03 22:28:14 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 73.222.181.208 at 2016-06-03 22:28:14 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/static.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 73.222.181.208 at 2016-06-03 22:28:14 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/shows.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 73.222.181.208 at 2016-06-03 22:28:14 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 73.222.181.208 at 2016-06-03 22:28:14 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 73.222.181.208 at 2016-06-03 22:28:14 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/users/sign_up" for 73.222.181.208 at 2016-06-03 22:28:17 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/Jason/.rvm/gems/ruby-2.2.3/gems/devise-4.1.1/app/views/devise/shared/_links.html.erb (0.9ms)
+  Rendered /Users/Jason/.rvm/gems/ruby-2.2.3/gems/devise-4.1.1/app/views/devise/registrations/new.html.erb within layouts/application (103.5ms)
+Completed 200 OK in 132ms (Views: 121.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/auth/facebook" for 73.222.181.208 at 2016-06-03 22:28:19 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/users/auth/facebook" for 73.222.181.208 at 2016-06-03 22:28:19 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/users/sign_in" for 73.222.181.208 at 2016-06-03 22:28:59 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/Jason/.rvm/gems/ruby-2.2.3/gems/devise-4.1.1/app/views/devise/shared/_links.html.erb (0.5ms)
+  Rendered /Users/Jason/.rvm/gems/ruby-2.2.3/gems/devise-4.1.1/app/views/devise/sessions/new.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 27ms (Views: 24.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 73.222.181.208 at 2016-06-03 22:29:19 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IT3cEtO1A37ujX9BAgUMMlfLDgItaH/Y/NzF4k6d1mW/yKbuzYl/8QMpNFmEhvPcW3CHZVgNNbYDILFe07vTqQ==", "user"=>{"email"=>"jasonpaulsouthwell@me.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "jasonpaulsouthwell@me.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "users" SET "remember_created_at" = ? WHERE "users"."id" = ?  [["remember_created_at", "2016-06-04 05:29:19.811528"], ["id", 3]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-06-03 19:33:08.857520"], ["current_sign_in_at", "2016-06-04 05:29:19.819383"], ["current_sign_in_ip", "73.222.181.208"], ["sign_in_count", 6], ["id", 3]]
+  [1m[35m (1.3ms)[0m  commit transaction
+Redirected to http://73.222.181.208:3000/
+Completed 302 Found in 212ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/" for 73.222.181.208 at 2016-06-03 22:29:19 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StaticController#index as HTML
+  Rendered static/index.html.erb within layouts/application (0.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 3]]
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/shows" for 73.222.181.208 at 2016-06-03 22:29:22 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ShowsController#index as HTML
+  [1m[35mShow Load (1.6ms)[0m  SELECT "shows".* FROM "shows"
+  [1m[36mNetwork Load (0.4ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered shows/index.html.erb within layouts/application (35.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 3]]
+Completed 200 OK in 143ms (Views: 57.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/shows/a-great-show" for 73.222.181.208 at 2016-06-03 22:29:24 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"a-great-show"}
+  [1m[35mShow Load (0.5ms)[0m  SELECT  "shows".* FROM "shows" WHERE "shows"."slug" = ? LIMIT 1  [["slug", "a-great-show"]]
+  [1m[36mUserShow Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "user_shows" WHERE "user_shows"."show_id" = ? LIMIT 1[0m  [["show_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("user_shows"."rating") FROM "user_shows" WHERE "user_shows"."show_id" = ?  [["show_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "user_shows" WHERE "user_shows"."show_id" = ?[0m  [["show_id", 1]]
+  Rendered shows/show.html.erb within layouts/application (18.4ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 3]]
+Completed 200 OK in 55ms (Views: 52.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/shows" for 73.222.181.208 at 2016-06-03 22:29:25 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ShowsController#index as HTML
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT "shows".* FROM "shows"[0m
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered shows/index.html.erb within layouts/application (2.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 3]]
+Completed 200 OK in 21ms (Views: 19.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/networks/sftv" for 73.222.181.208 at 2016-06-03 22:29:26 -0700
+Cannot render console from 73.222.181.208! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by NetworksController#show as HTML
+  Parameters: {"id"=>"sftv"}
+  [1m[36mNetwork Load (0.5ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."slug" = ? LIMIT 1[0m  [["slug", "sftv"]]
+  [1m[35mShow Load (0.1ms)[0m  SELECT "shows".* FROM "shows" WHERE "shows"."network_id" = ?  [["network_id", 1]]
+  Rendered networks/show.html.erb within layouts/application (2.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 3]]
+Completed 200 OK in 21ms (Views: 19.8ms | ActiveRecord: 0.7ms)
