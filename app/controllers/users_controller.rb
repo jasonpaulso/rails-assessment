@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
+  load_resource :find_by => :slug, :only => :show
   def show
-    @user = User.find(params[:id])
   end
 end
