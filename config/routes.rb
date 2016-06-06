@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root "static#index"
   resources :shows
   resources :networks
-  resources :users
+  resources :users do
+    resources :shows
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -9,5 +9,8 @@ class UserShow < ActiveRecord::Base
   def network
     show.network
   end
+  def slug
+    show.slug
+  end
 
 end

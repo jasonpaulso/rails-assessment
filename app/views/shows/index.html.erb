@@ -1,5 +1,5 @@
 <h1>This is the shows page!</h1>
-<%=link_to "Add a new show!", new_show_path if user_signed_in?%>
+<%=link_to "Add a new show!", new_user_show_path(current_user) if user_signed_in?%>
 <ul>
   <% @shows.each do |show| %>
     <li><%=link_to show.title, show_path(show)%>, <%=show.time%>, <%=link_to show.network.name, network_path(show.network) if show.network%> </li>

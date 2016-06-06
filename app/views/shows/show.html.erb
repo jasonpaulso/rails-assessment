@@ -1,2 +1,9 @@
 <h1><%=@show.title%></h1>
 <h3>Average User Rating: <%=@show.rating%></h3>
+
+<h3>Users who follow this show:</h3>
+<ul>
+  <%@show.users.each do |user|%>
+    <li><%=link_to user.name, user%></li>
+  <%end%>
+</ul>

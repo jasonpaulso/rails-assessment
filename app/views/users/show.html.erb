@@ -1,6 +1,6 @@
 <h1>Profile for: <%=@user.name%></h1>
 <ul>
   <%@user.user_shows.each do |show|%>
-    <li><%=show.title%>, On: <%=show.network.name if show.network%>, <%=@user.name%>'s Rating: <%=show.rating%></li>
+    <li><%=link_to show.title, show_path(show.slug)%>, On: <%=link_to show.network.name, network_path(show.network.slug) if show.network%>, Rating: <%=show.rating%></li>
     <%end%>
 </ul>
