@@ -1,5 +1,5 @@
 class ShowsController < ApplicationController
-  load_resource :find_by => :slug, :only => :show
+  load_resource :find_by => :slug, :only => [:show, :remove_from_user_shows]
   # skip_authorize_resource :only => [:index, :show]
   # load_and_authorize_resource
 
@@ -19,6 +19,19 @@ class ShowsController < ApplicationController
     current_user.shows << @show if !current_user.shows.find_by(title:@show.title)
     redirect_to @show
   end
+
+  def remove_from_user_shows
+    @user = User.find_by(slug:params[:user_id])
+    show = Show.find_by(slug:params[:show_id])
+    if @user == current_user
+      @user.shows.delete(show)
+      redirect_to @user
+    else
+      flash[:error] = "You cannot perform this action."
+      redirect_to @user
+    end
+  end
+
 
   private
 
