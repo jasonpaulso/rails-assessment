@@ -11,16 +11,18 @@ class ShowsController < ApplicationController
   def show
   end
   def new
+    @network = Network.first_or_create(params[:network])
   end
   def create
-    @show = Show.create(show_params)
+    @show = Show.where(title:show_params[:title]).first_or_create(show_params)
+    current_user.shows << @show if !current_user.shows.find_by(title:@show.title)
     redirect_to @show
   end
 
   private
 
   def show_params
-    params.require(:show).permit(:title, :network, :day, :time)
+    params.require(:show).permit(:title, :day, :time)
   end
 
 end
