@@ -1,14 +1,10 @@
 class ShowsController < ApplicationController
-  load_resource :find_by => :slug, :only => [:show, :remove_from_user_shows]
-  # skip_authorize_resource :only => [:index, :show]
-  # load_and_authorize_resource
-
-
 
   def index
     @shows = Show.all
   end
   def show
+    @show = Show.find_by(slug:params[:id])
   end
   def new
     @show = Show.new

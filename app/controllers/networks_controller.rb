@@ -1,8 +1,8 @@
 class NetworksController < ApplicationController
-    load_resource :find_by => :slug, :only => :show
   def index
     @networks = Network.all
   end
   def show
+    @network = Network.find_by(slug:params[:id])
   end
 end

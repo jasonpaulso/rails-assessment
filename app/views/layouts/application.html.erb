@@ -12,9 +12,11 @@
 <%=link_to "Home", root_path%>
 <%=link_to "View Shows", shows_path%>
 <%=link_to "View Networks", networks_path%>
+<%=link_to "View Users", users_path%>
 <%=link_to "Sign Up/In", new_user_registration_path if !user_signed_in?%>
 <%=link_to "Sign Out", destroy_user_session_path, :method => :delete if user_signed_in? %>
 <h1>Welcome to the TV Tracker <%=current_user.name if user_signed_in?%>!</h1>
+<%=link_to "Add a new show!", new_user_show_path(current_user) if user_signed_in?%>
 
 <%= yield %>
 
