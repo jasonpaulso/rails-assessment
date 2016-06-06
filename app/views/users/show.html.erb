@@ -1,4 +1,4 @@
-<h1>Profile for: <%=@user.name%></h1>
+<h1><%=@user.name%>'s Show Collection</h1>
 <ul>
   <%@user.user_shows.each do |show|%>
     <li><%=link_to show.title, show_path(show.slug)%>, On: <%=link_to show.network.name, network_path(show.network.slug) if show.network%>, Rating: <%=show.rating%> <%= link_to "Remove From My Shows", user_show_remove_from_user_shows_path(@user, show.slug), method: :delete if @user == current_user %></li>

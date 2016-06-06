@@ -1,17 +1,21 @@
 <%=form_for @show do |f|%>
 <%=f.label :title%>
 <%=f.text_field :title%>
-<%=f.label :day%>
+
+<!-- <%=f.label :day%>
 <%=f.text_field :day%>
+
 <%=f.label "Showtime"%>
 <%=f.text_field :time %>
+<%=f.label "Rating (1 to 5)", nil, in: 1...5%>
+<%=f.number_field :rating %> -->
 <%=f.fields_for :network, @network do |network_field|%>
 <%=f.label "Network"%>
 <%=network_field.text_field :name%>
 <%end%>
 <%=f.fields_for :actors, @show.actors do |actors_fields|%>
-<%=f.label "Lead Actor"%>
-<%=actors_fields.text_field :name%>
+<!-- <%=f.label "Lead Actor"%>
+<%=actors_fields.text_field :name%> -->
 <%end%>
 <%=f.submit%>
 <%end%>

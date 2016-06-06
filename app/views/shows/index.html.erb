@@ -1,7 +1,6 @@
 <h1>This is the shows page!</h1>
 <ul>
-  <% @shows.each do |show| %>
-    <li><%=link_to show.title, show_path(show)%>,
-      <%=show.time%>, <%=link_to show.network.name, network_path(show.network) if show.network%> </li>
+  <% @shows.order(title: :asc).each do |show| %>
+    <li><%=link_to show.title, show_path(show)%>, <%=link_to show.network.name, network_path(show.network) if show.network%> </li>
     <%end%>
 </ul>

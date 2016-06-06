@@ -35,6 +35,8 @@ gem 'omniauth-facebook'
 #Pundit
 gem "pundit"
 
+gem "faker"
+
 
 
 

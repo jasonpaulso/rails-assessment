@@ -7,7 +7,7 @@ class Show < ActiveRecord::Base
   belongs_to :network
   has_many :show_actors
   has_many :actors, through: :show_actors
-
+  validates :title, presence: true
 
   def network_attributes=(network_attributes)
     network_attributes.values.each do |network_attribute|
