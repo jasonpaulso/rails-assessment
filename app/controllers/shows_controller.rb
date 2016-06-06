@@ -15,6 +15,9 @@ class ShowsController < ApplicationController
     current_user.shows << @show if !current_user.shows.find_by(title:@show.title)
     redirect_to @show
   end
+  def edit
+    @show = Show.find_by(slug:params[:id])
+  end
 
   def remove_from_user_shows
     @user = User.find_by(slug:params[:user_id])
@@ -25,6 +28,16 @@ class ShowsController < ApplicationController
     else
       flash[:error] = "You cannot perform this action."
       redirect_to @user
+    end
+  end
+  def add_to_user_shows
+    show = Show.find_by(slug:params[:show_id])
+    if user_signed_in?
+      current_user.shows << show
+      redirect_to current_user
+    else
+      flash[:error] = "You cannot perform this action."
+      redirect_to show
     end
   end
 

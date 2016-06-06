@@ -1,4 +1,8 @@
 <h1><%=@show.title%></h1>
+<p>
+    <%=link_to "Edit this show.", edit_show_path(@show) if user_signed_in? && current_user.admin?%>
+    <%=link_to "Add to my shows.", user_show_add_to_user_shows_path(current_user.id, @show.slug), method: :post if user_signed_in?%>
+</p>
 <h3>Average User Rating: <%=@show.rating%></h3>
 
 <h3>Users who follow this show:</h3>

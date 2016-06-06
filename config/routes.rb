@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :shows do
       delete :remove_from_user_shows
+      post :add_to_user_shows
     # end
   end
 end
