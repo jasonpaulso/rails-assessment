@@ -7,6 +7,21 @@ class Show < ActiveRecord::Base
   has_many :show_actors
   has_many :actors, through: :show_actors
 
+
+  def network_attributes=(network_attributes)
+    network_attributes.values.each do |network_attribute|
+      network = Network.find_or_create_by(name:network_attribute)
+      self.network = network
+    end
+  end
+
+  def actors=(actors)
+    actors.values.each do |actor_attribute|
+      actor = Actor.find_or_create_by(name:actor_attribute)
+      self.actors << actor
+    end
+  end
+
   def rating
     if user_shows.empty?
       return "Not yet rated"

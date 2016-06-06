@@ -11,10 +11,13 @@ class ShowsController < ApplicationController
   def show
   end
   def new
-    @network = Network.first_or_create(params[:network])
+    @show = Show.new
+    @network = Network.new
   end
   def create
     @show = Show.where(title:show_params[:title]).first_or_create(show_params)
+    # raise params.inspect
+    # @show.actors << Actor.find_or_create_by(name:show_params[:actors][:name])
     current_user.shows << @show if !current_user.shows.find_by(title:@show.title)
     redirect_to @show
   end
@@ -22,7 +25,7 @@ class ShowsController < ApplicationController
   private
 
   def show_params
-    params.require(:show).permit(:title, :day, :time)
+    params.require(:show).permit(:title, :day, :time, network_attributes: [:name], actors: [:name])
   end
 
 end

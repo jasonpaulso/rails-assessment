@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :name, use: :slugged
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
@@ -13,6 +13,12 @@ class User < ActiveRecord::Base
   has_many :actors, through: :shows
   has_many :networks, through: :shows
 
+  def add_show
+  end
+
+
+
+#Omniauth Methods
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
