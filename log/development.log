@@ -31319,3 +31319,357 @@ Processing by NetworksController#show as HTML
   Rendered networks/show.html.erb within layouts/application (1.5ms)
   [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
 Completed 200 OK in 22ms (Views: 18.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/shows/i-ll-never-get-the-nested-forms" for ::1 at 2016-06-05 20:51:48 -0700
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"i-ll-never-get-the-nested-forms"}
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows" WHERE "shows"."slug" = ? LIMIT 1  [["slug", "i-ll-never-get-the-nested-forms"]]
+  [1m[36mUserShow Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "user_shows" WHERE "user_shows"."show_id" = ? LIMIT 1[0m  [["show_id", 15]]
+  [1m[35m (0.0ms)[0m  SELECT SUM("user_shows"."rating") FROM "user_shows" WHERE "user_shows"."show_id" = ?  [["show_id", 15]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "user_shows" WHERE "user_shows"."show_id" = ?[0m  [["show_id", 15]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "user_shows" ON "users"."id" = "user_shows"."user_id" WHERE "user_shows"."show_id" = ?  [["show_id", 15]]
+  Rendered shows/show.html.erb within layouts/application (2.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Completed 200 OK in 20ms (Views: 16.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/jason-paul-southwell" for ::1 at 2016-06-05 20:51:49 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"jason-paul-southwell"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = ? LIMIT 1  [["slug", "jason-paul-southwell"]]
+  [1m[36mUserShow Load (0.1ms)[0m  [1mSELECT "user_shows".* FROM "user_shows" WHERE "user_shows"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mShow Load (0.0ms)[0m  SELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35mNetwork Load (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35mNetwork Load (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mNetwork Load (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 15]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (9.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Completed 200 OK in 27ms (Views: 23.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/networks/sfbc" for ::1 at 2016-06-05 20:51:50 -0700
+Processing by NetworksController#show as HTML
+  Parameters: {"id"=>"sfbc"}
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."slug" = ? LIMIT 1  [["slug", "sfbc"]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT "shows".* FROM "shows" WHERE "shows"."network_id" = ?[0m  [["network_id", 2]]
+  Rendered networks/show.html.erb within layouts/application (2.0ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+Completed 200 OK in 21ms (Views: 17.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/shows/another-show" for ::1 at 2016-06-05 21:18:24 -0700
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"another-show"}
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."slug" = ? LIMIT 1[0m  [["slug", "another-show"]]
+  [1m[35mUserShow Exists (0.1ms)[0m  SELECT  1 AS one FROM "user_shows" WHERE "user_shows"."show_id" = ? LIMIT 1  [["show_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "user_shows" ON "users"."id" = "user_shows"."user_id" WHERE "user_shows"."show_id" = ?[0m  [["show_id", 2]]
+  Rendered shows/show.html.erb within layouts/application (2.0ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+Completed 200 OK in 38ms (Views: 35.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2016-06-05 21:18:25 -0700
+Processing by StaticController#index as HTML
+  Rendered static/index.html.erb within layouts/application (0.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Completed 200 OK in 28ms (Views: 27.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/shows" for ::1 at 2016-06-05 21:18:26 -0700
+Processing by ShowsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT "shows".* FROM "shows"[0m
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered shows/index.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 38ms (Views: 37.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/shows/what-about-this-show" for ::1 at 2016-06-05 21:18:27 -0700
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"what-about-this-show"}
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows" WHERE "shows"."slug" = ? LIMIT 1  [["slug", "what-about-this-show"]]
+  [1m[36mUserShow Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "user_shows" WHERE "user_shows"."show_id" = ? LIMIT 1[0m  [["show_id", 7]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("user_shows"."rating") FROM "user_shows" WHERE "user_shows"."show_id" = ?  [["show_id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "user_shows" WHERE "user_shows"."show_id" = ?[0m  [["show_id", 7]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "user_shows" ON "users"."id" = "user_shows"."user_id" WHERE "user_shows"."show_id" = ?  [["show_id", 7]]
+  Rendered shows/show.html.erb within layouts/application (4.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Completed 200 OK in 34ms (Views: 30.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/jason-paul-southwell" for ::1 at 2016-06-05 21:18:29 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"jason-paul-southwell"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = ? LIMIT 1  [["slug", "jason-paul-southwell"]]
+  [1m[36mUserShow Load (0.1ms)[0m  [1mSELECT "user_shows".* FROM "user_shows" WHERE "user_shows"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36mShow Load (0.3ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35mNetwork Load (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mShow Load (0.2ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35mNetwork Load (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mNetwork Load (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 15]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (13.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Completed 200 OK in 38ms (Views: 33.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/shows/jason" for ::1 at 2016-06-05 21:18:31 -0700
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"jason"}
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows" WHERE "shows"."slug" = ? LIMIT 1  [["slug", "jason"]]
+  [1m[36mUserShow Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "user_shows" WHERE "user_shows"."show_id" = ? LIMIT 1[0m  [["show_id", 14]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("user_shows"."rating") FROM "user_shows" WHERE "user_shows"."show_id" = ?  [["show_id", 14]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "user_shows" WHERE "user_shows"."show_id" = ?[0m  [["show_id", 14]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "user_shows" ON "users"."id" = "user_shows"."user_id" WHERE "user_shows"."show_id" = ?  [["show_id", 14]]
+  Rendered shows/show.html.erb within layouts/application (2.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Completed 200 OK in 23ms (Views: 19.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/jason-paul-southwell" for ::1 at 2016-06-05 21:18:37 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"jason-paul-southwell"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = ? LIMIT 1  [["slug", "jason-paul-southwell"]]
+  [1m[36mUserShow Load (0.1ms)[0m  [1mSELECT "user_shows".* FROM "user_shows" WHERE "user_shows"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35mNetwork Load (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35mNetwork Load (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35mNetwork Load (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mNetwork Load (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 15]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (10.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Completed 200 OK in 30ms (Views: 25.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/shows/good-morning-l-co" for ::1 at 2016-06-05 21:18:39 -0700
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"good-morning-l-co"}
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows" WHERE "shows"."slug" = ? LIMIT 1  [["slug", "good-morning-l-co"]]
+  [1m[36mUserShow Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "user_shows" WHERE "user_shows"."show_id" = ? LIMIT 1[0m  [["show_id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("user_shows"."rating") FROM "user_shows" WHERE "user_shows"."show_id" = ?  [["show_id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "user_shows" WHERE "user_shows"."show_id" = ?[0m  [["show_id", 8]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "user_shows" ON "users"."id" = "user_shows"."user_id" WHERE "user_shows"."show_id" = ?  [["show_id", 8]]
+  Rendered shows/show.html.erb within layouts/application (2.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Completed 200 OK in 22ms (Views: 18.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/jason-paul-southwell" for ::1 at 2016-06-05 21:18:42 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"jason-paul-southwell"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = ? LIMIT 1  [["slug", "jason-paul-southwell"]]
+  [1m[36mUserShow Load (0.1ms)[0m  [1mSELECT "user_shows".* FROM "user_shows" WHERE "user_shows"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mShow Load (0.1ms)[0m  SELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35mNetwork Load (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mShow Load (0.0ms)[0m  [1mSELECT  "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT 1[0m  [["id", 15]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (11.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Completed 200 OK in 30ms (Views: 25.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/networks" for ::1 at 2016-06-05 21:18:43 -0700
+Processing by NetworksController#index as HTML
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT "networks".* FROM "networks"
+  Rendered networks/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/shows" for ::1 at 2016-06-05 21:18:44 -0700
+Processing by ShowsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT "shows".* FROM "shows"[0m
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mNetwork Load (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered shows/index.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 24ms (Views: 22.8ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-06-05 21:18:46 -0700
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"jwoJOlxVQkg26ziypM8i0u0eSYdf3ar40B0g6I8MqKP8O/us8OCyJqAyYqAYvTXVD9XTXvz+WSFt0T4ox4a4HA=="}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2016-06-05 21:18:46 -0700
+Processing by StaticController#index as HTML
+  Rendered static/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 19ms (Views: 18.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-06-05 21:18:47 -0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/Jason/.rvm/gems/ruby-2.2.3/gems/devise-4.1.1/app/views/devise/shared/_links.html.erb (0.9ms)
+  Rendered /Users/Jason/.rvm/gems/ruby-2.2.3/gems/devise-4.1.1/app/views/devise/registrations/new.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 27ms (Views: 25.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-06-05 21:18:50 -0700
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-06-05 21:18:50 -0700
+
+
+Started GET "/users/auth/facebook/callback?code=AQA3al-gnNvTo7yy4Z38xnNkqpMkndKSW3vhkn74zDuCLGWW_j4XWXuRhWVc4oLks2vFwYmh8A5Sh5Uqg6N8-g-8XQ3jkAGXe-heJe6C_0215YM-fy5M70QyURnZioOHsNgxrD-WTlF1KRuV6MsLTTlWoLYghmXQ4H1Kax8aalBq4alOzL5V5LjpIpb4Gt8GnTZaAbWpT2YIuoQyyTwqsFgx7HRIYqfYrdvxlRR8ErqNh_m3jEdClhJvHGLWiB7B7ZGyLr89ig2ROXQIxzMZD3Y7q6sF-Qg3eUZYf4x_JzCyb_7Nx30xOlt53sRcwGB_irTCJJn9e1eOH3C1JJgVzZx38trHOo4Fmd56snYltkM6aw&state=09fac79021a0f338a55cb45cba324990f811ace91c983395" for ::1 at 2016-06-05 21:18:50 -0700
+Processing by OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQA3al-gnNvTo7yy4Z38xnNkqpMkndKSW3vhkn74zDuCLGWW_j4XWXuRhWVc4oLks2vFwYmh8A5Sh5Uqg6N8-g-8XQ3jkAGXe-heJe6C_0215YM-fy5M70QyURnZioOHsNgxrD-WTlF1KRuV6MsLTTlWoLYghmXQ4H1Kax8aalBq4alOzL5V5LjpIpb4Gt8GnTZaAbWpT2YIuoQyyTwqsFgx7HRIYqfYrdvxlRR8ErqNh_m3jEdClhJvHGLWiB7B7ZGyLr89ig2ROXQIxzMZD3Y7q6sF-Qg3eUZYf4x_JzCyb_7Nx30xOlt53sRcwGB_irTCJJn9e1eOH3C1JJgVzZx38trHOo4Fmd56snYltkM6aw", "state"=>"09fac79021a0f338a55cb45cba324990f811ace91c983395"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."provider" = ? AND "users"."uid" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["provider", "facebook"], ["uid", "10209769159364528"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-06-06 01:25:17.651975"], ["current_sign_in_at", "2016-06-06 04:18:51.181961"], ["sign_in_count", 12], ["id", 4]]
+  [1m[35m (1.3ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2016-06-05 21:18:51 -0700
+Processing by StaticController#index as HTML
+  Rendered static/index.html.erb within layouts/application (0.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Completed 200 OK in 14ms (Views: 13.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/networks" for ::1 at 2016-06-05 21:19:00 -0700
+Processing by NetworksController#index as HTML
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT "networks".* FROM "networks"
+  Rendered networks/index.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Completed 200 OK in 18ms (Views: 17.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/shows" for ::1 at 2016-06-05 21:19:02 -0700
+Processing by ShowsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mShow Load (0.1ms)[0m  [1mSELECT "shows".* FROM "shows"[0m
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered shows/index.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 22ms (Views: 21.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2016-06-05 21:19:03 -0700
+Processing by StaticController#index as HTML
+  Rendered static/index.html.erb within layouts/application (0.0ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/networks" for ::1 at 2016-06-05 21:19:19 -0700
+Processing by NetworksController#index as HTML
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT "networks".* FROM "networks"[0m
+  Rendered networks/index.html.erb within layouts/application (0.9ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/shows" for ::1 at 2016-06-05 21:21:53 -0700
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mShow Load (0.1ms)[0m  SELECT "shows".* FROM "shows"
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mNetwork Load (0.1ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mNetwork Load (0.1ms)[0m  [1mSELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "networks".* FROM "networks" WHERE "networks"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered shows/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 22ms (Views: 20.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/jason-paul-southwell/shows/new" for ::1 at 2016-06-05 21:21:58 -0700
+Processing by ShowsController#new as HTML
+  Parameters: {"user_id"=>"jason-paul-southwell"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  Rendered shows/new.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 26ms (Views: 24.8ms | ActiveRecord: 0.2ms)
