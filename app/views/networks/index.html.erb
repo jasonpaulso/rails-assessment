@@ -1,12 +1,10 @@
-<h1>Welcome to the Networks Page!</h1>
-
-<ul>
-  <% @networks.each do |network| %>
-    <li><%=link_to network.name, network_path(network)%>
-      <ul><% network.shows.each do |show| %>
-        <li><%=link_to show.title, show_path(show)%></li>
+<h1>Shows by Network</h1>
+  <% @networks.order(name: :asc).each do |network| %>
+    <table class="table"><thead><th><%=link_to network.name.upcase, network_path(network)%></th></thead>
+      <tbody>
+      <% network.shows.order(title: :asc).each do |show| %>
+        <tr ><td style="border:none"><%=link_to show.title.titleize, show_path(show)%></td></tr>
         <%end%>
-        </ul>
-    </li>
+      </tbody>
+    </table>
     <%end%>
-</ul>

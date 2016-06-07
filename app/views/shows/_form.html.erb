@@ -5,9 +5,14 @@
 </div>
 
 <div class="field">
+<!-- <%= f.select(:network_id, Network.all.collect {|n| [n.name, n.id]}, {:include_blank => true}) %> -->
+<!-- <%= f.select(:network_id, Network.all.collect {|mt| [ mt.name, mt.id ] }, {:include_blank => true})%> -->
 <%=f.fields_for :network, @network do |network_field|%>
 <%=network_field.text_field :name, label: "Network Name"%><br>
 <%end%>
 </div>
+<div class="field">
+<%=f.text_area :description%>
+
 <%=f.submit%>
 <%end%>

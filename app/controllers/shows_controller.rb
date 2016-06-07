@@ -19,9 +19,10 @@ class ShowsController < ApplicationController
 
   def create
     @show = Show.where(title:show_params[:title]).first_or_create(show_params)
+    # raise params.inspect
     if @show.save
       current_user.shows << @show if !current_user.shows.find_by(title:@show.title)
-      redirect_to(@show, :flash => :success)
+      redirect_to @show
     else
       flash[:error] = "You cannot perform this action."
       render :new
@@ -66,7 +67,7 @@ class ShowsController < ApplicationController
   private
 
   def show_params
-    params.require(:show).permit(:title, :day, :time, network_attributes: [:name], actors: [:name])
+    params.require(:show).permit(:title, :day, :time, :description, :network_id, network_attributes: [:name], actors: [:name])
   end
 
 end

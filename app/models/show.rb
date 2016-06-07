@@ -8,21 +8,26 @@ class Show < ActiveRecord::Base
   has_many :show_actors
   has_many :actors, through: :show_actors
   validates :title, presence: true
+  validates :description, presence: true
 
 
   def network_attributes=(network_attributes)
     network_attributes.values.each do |network_attribute|
-      network = Network.find_or_create_by(name:network_attribute)
+      # network = Network.where('lower(name) = ?', network_attribute.downcase)
+      # network ||= Network.create(name:network_attribute)
+      network = Network.where('lower(name) = ?', network_attribute.downcase).first_or_create
+      # network = Network.find_or_create_by(name:network_attribute)
       self.network = network
     end
   end
 
-  def actors=(actors)
-    actors.values.each do |actor_attribute|
-      actor = Actor.find_or_create_by(name:actor_attribute)
-      self.actors << actor
-    end
-  end
+  # def actors=(actors)
+  #   actors.values.each do |actor_attribute|
+  #     actor = Actor.find_or_create_by(name:actor_attribute)
+  #     self.actors << actor
+  #   end
+  # end
+
 
   def rating
     self.user_shows.count

@@ -1,7 +1,8 @@
 <h1>Welcome to the <%=@network.name%> Page!</h1>
-
-<ul>
-  <%@network.shows.each do |show|%>
-    <li><%=link_to show.title, show_path(show)%></li>
+<table class="table">
+<tbody>
+  <%@network.shows.order(title: :asc).each do |show|%>
+    <tr ><td style="border:none"><%=link_to show.title, show_path(show)%></td></tr>
     <%end%>
-</ul>
+</tbody>
+</table>

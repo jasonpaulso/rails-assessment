@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606202023) do
+ActiveRecord::Schema.define(version: 20160607184035) do
 
   create_table "actors", force: :cascade do |t|
     t.string "name"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160606202023) do
     t.string  "day"
     t.string  "time"
     t.string  "slug"
+    t.text    "description"
   end
 
   add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true

@@ -4,7 +4,7 @@ class Network < ActiveRecord::Base
 
   has_many :shows
   has_many :actors, through: :shows
-  validates :name, length: { minimum: 2 }
+  validates :name, presence: true
 
 
 
