@@ -13,10 +13,6 @@ class User < ActiveRecord::Base
   has_many :actors, through: :shows
   has_many :networks, through: :shows
 
-  def add_show
-  end
-
-
 
 #Omniauth Methods
   def self.from_omniauth(auth)

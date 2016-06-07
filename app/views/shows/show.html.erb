@@ -1,7 +1,13 @@
 <h1><%=@show.title%></h1>
 <p>
-    <%=link_to "Edit this show.", edit_show_path(@show) if user_signed_in? && current_user.admin?%>
-    <%=link_to "Add to my shows.", user_show_add_to_user_shows_path(current_user.id, @show.slug), method: :post if user_signed_in?%>
+  <%if user_signed_in? %>
+    <%if current_user.admin?%>
+      <%=link_to "Edit this show.", edit_show_path(@show)%>
+      <%=link_to "Delete this show.", show_path(@show), method: "delete"%>
+    <%else%>
+      <%=link_to "Add to my shows.", user_show_add_to_user_shows_path(current_user.id, @show.slug), method: :post if !current_user.shows.include?(@show)%>
+    <%end%>
+  <%end%>
 </p>
 <h3>Average User Rating: <%=@show.rating%></h3>
 

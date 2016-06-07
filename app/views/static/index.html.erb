@@ -1,1 +1,2 @@
 <h1>Welcome to the TV Tracker <%=current_user.name if user_signed_in?%>!</h1>
+<h3>Today's User Favorite Show: <%=link_to Show.most_popular_show.title, show_path(Show.most_popular_show)%></h3>

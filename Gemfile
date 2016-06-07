@@ -35,8 +35,9 @@ gem 'omniauth-facebook'
 #Pundit
 gem "pundit"
 
-gem "faker"
+gem "bootstrap_flash_messages", "~> 1.0.1"
 
+gem 'bootstrap_form'
 
 
 

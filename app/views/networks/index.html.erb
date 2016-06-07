@@ -2,6 +2,11 @@
 
 <ul>
   <% @networks.each do |network| %>
-    <li><%=link_to network.name, network_path(network)%></li>
+    <li><%=link_to network.name, network_path(network)%>
+      <ul><% network.shows.each do |show| %>
+        <li><%=link_to show.title, show_path(show)%></li>
+        <%end%>
+        </ul>
+    </li>
     <%end%>
 </ul>

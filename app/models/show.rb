@@ -9,6 +9,7 @@ class Show < ActiveRecord::Base
   has_many :actors, through: :show_actors
   validates :title, presence: true
 
+
   def network_attributes=(network_attributes)
     network_attributes.values.each do |network_attribute|
       network = Network.find_or_create_by(name:network_attribute)
@@ -24,10 +25,11 @@ class Show < ActiveRecord::Base
   end
 
   def rating
-    if user_shows.empty?
-      return "Not yet rated"
-    else
-      ((user_shows.sum(:rating) / user_shows.count)*2).floor.to_f / 2
-    end
+    self.user_shows.count
   end
+
+  def self.most_popular_show
+    self.joins(:user_shows).group("show_id").order("COUNT(*) DESC").limit(1).take
+  end
+
 end

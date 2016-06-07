@@ -3,20 +3,40 @@ class ShowsController < ApplicationController
   def index
     @shows = Show.all
   end
+
   def show
     @show = Show.find_by(slug:params[:id])
   end
+
   def new
     @show = Show.new
     @network = Network.new
   end
-  def create
-    @show = Show.where(title:show_params[:title]).first_or_create(show_params)
-    current_user.shows << @show if !current_user.shows.find_by(title:@show.title)
-    redirect_to @show
-  end
+
   def edit
     @show = Show.find_by(slug:params[:id])
+  end
+
+  def create
+    @show = Show.where(title:show_params[:title]).first_or_create(show_params)
+    if @show.save
+      current_user.shows << @show if !current_user.shows.find_by(title:@show.title)
+      redirect_to(@show, :flash => :success)
+    else
+      flash[:error] = "You cannot perform this action."
+      render :new
+    end
+  end
+
+  def destroy
+    @show = Show.find_by(slug:params[:id])
+    if current_user.admin?
+      @show.destroy
+      redirect_to shows_path
+    else
+      flash[:error] = "You cannot perform this action."
+      redirect_to @show
+    end
   end
 
   def remove_from_user_shows
@@ -30,6 +50,7 @@ class ShowsController < ApplicationController
       redirect_to @user
     end
   end
+
   def add_to_user_shows
     show = Show.find_by(slug:params[:show_id])
     if user_signed_in?
