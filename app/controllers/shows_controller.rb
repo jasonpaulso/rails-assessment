@@ -15,16 +15,22 @@ class ShowsController < ApplicationController
 
   def edit
     @show = Show.find_by(slug:params[:id])
+    if current_user.admin?
+      render :edit
+    else
+      flash[:error] = "You are not authorized to edit shows."
+      redirect_to @show
+    end
+
   end
 
   def create
     @show = Show.where(title:show_params[:title]).first_or_create(show_params)
-    # raise params.inspect
     if @show.save
       current_user.shows << @show if !current_user.shows.find_by(title:@show.title)
       redirect_to @show
     else
-      flash[:error] = "You cannot perform this action."
+      flash[:error] = "Please review the errors below."
       render :new
     end
   end
@@ -67,7 +73,7 @@ class ShowsController < ApplicationController
   private
 
   def show_params
-    params.require(:show).permit(:title, :day, :time, :description, :network_id, network_attributes: [:name], actors: [:name])
+    params.require(:show).permit(:title, :day, :time, :description, network_attributes: [:name], actors: [:name])
   end
 
 end

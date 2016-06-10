@@ -11,22 +11,11 @@ class Show < ActiveRecord::Base
   validates :description, presence: true
 
 
-  def network_attributes=(network_attributes)
-    network_attributes.values.each do |network_attribute|
-      # network = Network.where('lower(name) = ?', network_attribute.downcase)
-      # network ||= Network.create(name:network_attribute)
-      network = Network.where('lower(name) = ?', network_attribute.downcase).first_or_create
-      # network = Network.find_or_create_by(name:network_attribute)
-      self.network = network
-    end
-  end
 
-  # def actors=(actors)
-  #   actors.values.each do |actor_attribute|
-  #     actor = Actor.find_or_create_by(name:actor_attribute)
-  #     self.actors << actor
-  #   end
-  # end
+  def network_attributes=(network_attributes)
+    network = Network.find_or_create_by(name:network_attributes[:name])
+    self.network = network
+  end
 
 
   def rating

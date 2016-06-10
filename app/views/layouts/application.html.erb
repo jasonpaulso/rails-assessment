@@ -15,8 +15,17 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
-  
+
 <%= render 'layouts/nav' %>
+<div class="errors">
+  <% if flash[:error] -%>
+    <p class='alert alert-danger' role="alert"><%=h flash[:error] %></p>
+  <% end -%>
+  <% if flash[:notice] -%>
+    <p class='alert alert-info' role="alert"><%=h flash[:notice] %></p>
+  <% end -%>
+</div>
+
 
 <div class="container">
   <%= yield %>

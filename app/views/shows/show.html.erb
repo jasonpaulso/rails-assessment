@@ -3,21 +3,22 @@
 <p>
   <%=@show.description%>
 </p>
-<h3>Total User's Following: <%=@show.rating%></h3>
-<ul>
+<h3>User's who've collected this show: <%=@show.rating%></h3>
+<br>
+<table>
   <%@show.users.each do |user|%>
-    <li><%=link_to user.name, user%></li>
+    <tr><td><%=link_to user.name, user%></td></tr>
   <%end%>
-</ul>
+<table>
+<br>
 
-<p>
+<ul>
   <%if user_signed_in? %>
     <%if current_user.admin?%>
-      <%=link_to "ADMIN: Edit this show.", edit_show_path(@show)%>
-      <%=link_to "ADMIN: Delete this show.", show_path(@show), method: "delete"%>
-    <%else%>
-      <%=link_to "Add to my shows.", user_show_add_to_user_shows_path(current_user.id, @show.slug), method: :post if !current_user.shows.include?(@show)%>
+      <li><%=link_to "ADMIN: Edit this show.", edit_show_path(@show)%></li>
+      <li><%=link_to "ADMIN: Delete this show.", show_path(@show), method: "delete", :data => {:confirm => 'Are you sure you want to delete this show?'} %></li>
     <%end%>
-    <%= link_to "Remove From My Shows", user_show_remove_from_user_shows_path(current_user, @show.slug), method: :delete if current_user.shows.include?(@show)%>
+    <li><%=link_to "USER: Add to my shows.", user_show_add_to_user_shows_path(current_user.id, @show.slug), method: :post  if !current_user.shows.include?(@show)%></li>
+    <li><%= link_to "USER: Remove From My Shows", user_show_remove_from_user_shows_path(current_user, @show.slug), method: :delete, :data => {:confirm => 'Are you sure you want to remove this show?'}  if current_user.shows.include?(@show)%></li>
   <%end%>
-</p>
+</ul>

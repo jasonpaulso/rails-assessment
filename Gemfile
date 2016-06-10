@@ -39,7 +39,7 @@ gem "pundit"
 
 gem 'bootstrap_form'
 
-
+gem 'pry'
 
 
 # Use ActiveModel has_secure_password
