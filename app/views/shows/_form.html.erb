@@ -1,36 +1,16 @@
-<!-- <%=bootstrap_form_for @show do |f|%>
 
+
+<%=bootstrap_form_for @show do |f|%>
 <div class="field">
 <%=f.text_field :title, label: "Show Title"%>
 </div>
-
 <div class="field">
+<%= f.collection_select(:network_id, @networks.order('name ASC'), :id, :name, {include_blank: true}) %>
 <%=f.fields_for :network, @network do |network_field|%>
 <%=network_field.text_field :name, label: "Network Name"%><br>
 <%end%>
 </div>
 <div class="field">
 <%=f.text_area :description%>
-
-<%=f.submit%>
-<%end%>
-
- -->
-
-
-<%=bootstrap_form_for @show do |f|%>
-
-<div class="field">
-<%=f.text_field :title, label: "Show Title"%>
-</div>
-
-<div class="field">
-<%=f.fields_for :network, @network do |network_field|%>
-<%=network_field.text_field :name, class:"network-class", label: "Network Name"%><br>
-<%end%>
-</div>
-<%=f.text_area :description%>
-<!-- <%=f.fields_for :actors, @show.actors do |actors_fields|%>
-<%end%> -->
 <%=f.submit%>
 <%end%>

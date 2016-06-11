@@ -9,14 +9,12 @@ class Show < ActiveRecord::Base
   has_many :actors, through: :show_actors
   validates :title, presence: true
   validates :description, presence: true
-
+  validates :network, presence: true
 
 
   def network_attributes=(network_attributes)
-    network = Network.find_or_create_by(name:network_attributes[:name])
-    self.network = network
+    self.network = Network.find_or_create_by(name:network_attributes[:name]) unless self.network_id
   end
-
 
   def rating
     self.user_shows.count

@@ -11,6 +11,7 @@ class ShowsController < ApplicationController
   def new
     @show = Show.new
     @network = Network.new
+    @networks = Network.all
   end
 
   def edit
@@ -21,13 +22,12 @@ class ShowsController < ApplicationController
       flash[:error] = "You are not authorized to edit shows."
       redirect_to @show
     end
-
   end
 
   def create
-    @show = Show.where(title:show_params[:title]).first_or_create(show_params)
+    @show = Show.create(show_params)
     if @show.save
-      current_user.shows << @show if !current_user.shows.find_by(title:@show.title)
+      current_user.shows << @show
       redirect_to @show
     else
       flash[:error] = "Please review the errors below."
@@ -73,7 +73,7 @@ class ShowsController < ApplicationController
   private
 
   def show_params
-    params.require(:show).permit(:title, :day, :time, :description, network_attributes: [:name], actors: [:name])
+    params.require(:show).permit(:title, :day, :time, :description, :network_id, network_attributes: [:name], actors: [:name])
   end
 
 end
