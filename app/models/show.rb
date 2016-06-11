@@ -2,11 +2,14 @@ class Show < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  belongs_to :network
+  
   has_many :user_shows
   has_many :users, through: :user_shows
-  belongs_to :network
+
   has_many :show_actors
   has_many :actors, through: :show_actors
+
   validates :title, presence: true
   validates :description, presence: true
   validates :network, presence: true

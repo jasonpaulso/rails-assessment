@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :shows, through: :user_shows
   has_many :actors, through: :shows
   has_many :networks, through: :shows
+  
+  validates :name, presence: true
 
 
 #Omniauth Methods
