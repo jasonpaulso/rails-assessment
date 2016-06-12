@@ -30,6 +30,7 @@ class ShowsController < ApplicationController
       current_user.shows << @show
       redirect_to @show
     else
+      @networks = Network.all
       flash[:error] = "Please review the errors below."
       render :new
     end
