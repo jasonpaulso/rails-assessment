@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "static#index"
   resources :shows
   resources :networks
+  get 'networks/:id/shows' => 'shows#index'
   resources :users do
     resources :shows do
       delete :remove_from_user_shows

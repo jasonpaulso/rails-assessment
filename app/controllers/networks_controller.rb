@@ -12,4 +12,5 @@ class NetworksController < ApplicationController
       redirect_to networks_path
     end
   end
+
 end

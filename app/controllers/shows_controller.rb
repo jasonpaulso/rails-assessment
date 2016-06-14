@@ -1,7 +1,7 @@
 class ShowsController < ApplicationController
 
   def index
-
+    # binding.pry
     if params[:user_id]
         @user = User.find_by(slug: params[:user_id])
         if !@user.nil?
@@ -10,6 +10,14 @@ class ShowsController < ApplicationController
           flash[:error] = "That user does not exist."
           @shows = Show.all
           redirect_to shows_path
+        end
+    elsif params[:id]
+        @network = Network.find_by(slug:params[:id])
+        if !@network.nil?
+          @shows = @network.shows
+        else
+          flash[:error] = "That network does not exist."
+          redirect_to networks_path
         end
     else
       @shows = Show.all
