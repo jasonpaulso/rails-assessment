@@ -1,7 +1,19 @@
 class ShowsController < ApplicationController
 
   def index
-    @shows = Show.all
+
+    if params[:user_id]
+        @user = User.find_by(slug: params[:user_id])
+        if !@user.nil?
+          @shows = @user.shows
+        else
+          flash[:error] = "That user does not exist."
+          @shows = Show.all
+          redirect_to shows_path
+        end
+    else
+      @shows = Show.all
+    end
   end
 
   def show
