@@ -18,6 +18,12 @@ class ShowsController < ApplicationController
 
   def show
     @show = Show.find_by(slug:params[:id])
+    if !@show.nil?
+      render :show
+    else
+      flash[:error] = "That Show does not exist."
+      redirect_to shows_path
+    end
   end
 
   def new
@@ -28,11 +34,12 @@ class ShowsController < ApplicationController
 
   def edit
     @show = Show.find_by(slug:params[:id])
-    if current_user.admin?
+    if !@show.nil? && current_user.admin?
+      @networks = Network.all
       render :edit
     else
-      flash[:error] = "You are not authorized to edit shows."
-      redirect_to @show
+      flash[:error] = "You are not authorized to edit shows or that show does not exist."
+      redirect_to shows_path
     end
   end
 
