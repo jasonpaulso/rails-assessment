@@ -12,7 +12,9 @@ class Show < ActiveRecord::Base
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :network, presence: true
+  #This saved the day.
+  validates_associated :network
+  validates_presence_of :network
 
 
   def network_attributes=(network_attributes)
