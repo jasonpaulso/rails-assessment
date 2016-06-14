@@ -8,12 +8,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
+  # has_many :actors, through: :shows
+
   has_many :user_shows
   has_many :shows, through: :user_shows
-  has_many :actors, through: :shows
   has_many :networks, through: :shows
-  
-  validates :name, presence: true
+
+  validates_presence_of :name
 
 
 #Omniauth Methods

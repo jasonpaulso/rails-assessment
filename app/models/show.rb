@@ -10,11 +10,12 @@ class Show < ActiveRecord::Base
   has_many :show_actors
   has_many :actors, through: :show_actors
 
-  validates :title, presence: true
-  validates :description, presence: true
   #This saved the day.
-  validates_associated :network
   validates_presence_of :network
+  validates_associated :network
+
+  validates_presence_of :description
+  validates_presence_of :title
 
 
   def network_attributes=(network_attributes)
