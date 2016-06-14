@@ -6,6 +6,8 @@ class Network < ActiveRecord::Base
   has_many :actors, through: :shows
 
   validates :name, presence: true
+  
+
 
 
 

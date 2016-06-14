@@ -3,7 +3,7 @@ class Show < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   belongs_to :network
-  
+
   has_many :user_shows
   has_many :users, through: :user_shows
 
