@@ -6,7 +6,10 @@ class NetworksController < ApplicationController
   def show
     @network = Network.find_by(slug:params[:id])
     if !@network.nil?
-      @network
+        respond_to do |f|
+        f.html { render :show }
+        f.json { render json: @network }
+      end
     else
       flash[:error] = "That network does not exist."
       redirect_to networks_path

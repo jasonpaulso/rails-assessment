@@ -1,5 +1,5 @@
 
-
+<div class="new_show_form">
 <%=bootstrap_form_for @show do |f|%>
 <div class="field">
   <%=f.text_field :title, label: "Show Title"%>
@@ -14,3 +14,29 @@
   <%=f.text_area :description%>
   <%=f.submit%>
   <%end%>
+  </div>
+  </div>
+
+
+  <div id="postResult">
+    <h2 id="showTitle"></h2>
+    <p id="showBody"></p>
+  </div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+      var values = $(this).serialize();
+      var posting = $.post('/shows', values);
+      posting.done(function(data) {
+        // var show = data["show"];
+        // console.log(data);
+        $("#showTitle").text(data["title"]);
+        $("#showBody").text(data["description"]);
+      });
+
+    });
+  });
+</script>

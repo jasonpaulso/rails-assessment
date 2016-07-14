@@ -25,17 +25,11 @@ class ShowsController < ApplicationController
   end
 
   def show
-    @show = Show.find_by(slug:params[:id])
-    # if !@show.nil?
-    #   render :show
-    # else
-    #   flash[:error] = "That Show does not exist."
-    #   redirect_to shows_path
-    # end
-    respond_to do |format|
-      format.html {render :show}
-      format.json {render json: @show}
-    end
+      @show = Show.find_by(slug:params[:id])
+      respond_to do |format|
+        format.html {render :show}
+        format.json {render json: @show}
+      end
   end
 
   def new
@@ -59,7 +53,7 @@ class ShowsController < ApplicationController
     @show = Show.create(show_params)
     if @show.save
       current_user.shows << @show
-      redirect_to @show
+      render json: @show, status: 201
     else
       @networks = Network.all
       flash[:error] = "Please review the errors below."
