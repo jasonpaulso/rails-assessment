@@ -26,11 +26,15 @@ class ShowsController < ApplicationController
 
   def show
     @show = Show.find_by(slug:params[:id])
-    if !@show.nil?
-      render :show
-    else
-      flash[:error] = "That Show does not exist."
-      redirect_to shows_path
+    # if !@show.nil?
+    #   render :show
+    # else
+    #   flash[:error] = "That Show does not exist."
+    #   redirect_to shows_path
+    # end
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @show}
     end
   end
 
