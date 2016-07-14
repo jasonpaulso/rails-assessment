@@ -1,8 +1,11 @@
-<h1 class="showName"><%=@show.title.titleize%></h1>
-<h2 class="networkLink"><%=link_to @show.network.name.upcase, network_path(@show.network)%></h2>
-<p class="showDescription">
+<h1><%=@show.title.titleize%></h1>
+<h2><%=link_to @show.network.name.upcase, network_path(@show.network)%></h2>
+<p>
   <%=@show.description%>
 </p>
+<div class="show_poster">
+  <img src="<%=@show.url if @show.url != ""%>" alt="">
+</div>
 <h3>User's who've collected this show: <%=@show.rating%></h3>
 <br>
 <table>
@@ -22,21 +25,4 @@
     <li><%= link_to "USER: Remove From My Shows", user_show_remove_from_user_shows_path(current_user, @show.slug), method: :delete, :data => {:confirm => 'Are you sure you want to remove this show?'}  if current_user.shows.include?(@show)%></li>
   <%end%>
 </ul>
-
-
-<script type="text/javascript" charset="utf-8">
-$(function () {
-  $(".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    $.get("/products/" + nextId + ".json", function(data) {
-      $(".productName").text(data["name"]);
-      $(".productPrice").text(data["price"]);
-      $(".productDescription").text(data["description"]);
-      $(".productInventory").text(data["inventory"]);
-      // re-set the id to current on the link
-      $(".js-next").attr("data-id", data["id"]);
-    });
-  });
-});
-</script>
 
