@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", registrations: 'registrations' }
   root "static#index"
   resources :shows
+  # patch '/shows' => 'shows#edit'
   resources :networks
   get 'networks/:id/shows' => 'shows#index'
   resources :users do

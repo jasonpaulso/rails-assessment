@@ -49,6 +49,12 @@ class ShowsController < ApplicationController
     end
   end
 
+   def update
+    @show = Show.find_by(slug:params[:id])
+    @show.update(show_params)
+    redirect_to @show
+  end
+
   def create
     @show = Show.create(show_params)
     if @show.save
