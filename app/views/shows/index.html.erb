@@ -18,7 +18,9 @@ $(function() {
     var id = $(this).data("id");
     $.get("/shows/" + id + ".json", function(description) {
         var descriptionText = "<p>" + description["description"] + "</p>";
+        var image_url = "<img class='nailthumb-container' src=" + description["url"] + ">";
         $("#show-" + id).html(descriptionText);
+        $("#show-" + id).append(image_url);
     });
   });
 });
