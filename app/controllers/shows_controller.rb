@@ -53,7 +53,8 @@ class ShowsController < ApplicationController
     @show = Show.create(show_params)
     if @show.save
       current_user.shows << @show
-      render json: @show, status: 201
+      @network = @show.network
+      render json: @show, status: 201, notice: 'Show was successfully created.'
     else
       @networks = Network.all
       flash[:error] = "Please review the errors below."

@@ -21,6 +21,7 @@
   <div id="postResult">
     <h2 id="showTitle"></h2>
     <p id="showBody"></p>
+    <p id="showNetwork"></p>
   </div>
 
 <script type="text/javascript" charset="utf-8">
@@ -35,6 +36,7 @@
         // console.log(data);
         $("#showTitle").text(data["title"]);
         $("#showBody").text(data["description"]);
+        $("#showNetwork").text(data["network"]["name"]);
       });
 
     });
