@@ -16,11 +16,12 @@
 $(function() {
   $(".js-more").on("click", function() {
     var id = $(this).data("id");
-    $.get("/shows/" + id + ".json", function(description) {
-        var descriptionText = "<p>" + description["description"] + "</p>";
-        var image_url = "<img class='nailthumb-container' src=" + description["url"] + ">";
+    $.get("/shows/" + id + ".json", function(show) {
+        var descriptionText = "<p>" + show["description"] + "</p>";
         $("#show-" + id).html(descriptionText);
-        $("#show-" + id).append(image_url);
+        if (show["url"] != null) {
+          $("#show-" + id).append("<img src=" + show["url"] + ">");
+        }
     });
   });
 });
