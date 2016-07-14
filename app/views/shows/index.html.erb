@@ -1,6 +1,26 @@
 <h1>Shows by Title</h1>
 <table>
   <% @shows.order(title: :asc).each do |show| %>
-    <tr><td><%=link_to show.title.titleize, show_path(show)%>, <%=link_to show.network.name.upcase, network_path(show.network)%> </td></tr>
+    <tr>
+      <td>
+        <%=link_to show.title.titleize, show_path(show)%>, <%=link_to show.network.name.upcase, network_path(show.network)%> 
+        <div id="show-<%= show.slug %>"><%= truncate(show.description) %></div>
+        <button class="js-more" data-id="<%= show.slug %>">More Info</button>
+      </td>
+    </tr>
+      
     <%end%>
 </table>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".js-more").on("click", function() {
+    console.log(this);
+    var id = $(this).data("id");
+    $.get("/shows/" + id + ".json", function(description) {
+        var descriptionText = "<p>" + description["description"] + "</p>";
+        $("#show-" + id).html(descriptionText);
+    });
+  });
+});
+</script>
