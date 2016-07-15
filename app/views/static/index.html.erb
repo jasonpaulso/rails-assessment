@@ -4,3 +4,10 @@
 <p>
   <%=Show.most_popular_show.description%>
 </p>
+<h1>Search for TV Shows</h1>
+<%= form_tag '/search' do %>
+  <%= label_tag :query %>
+  <%= text_field_tag :query %>
+  <%= submit_tag "Search!" %>
+<% end %>
+

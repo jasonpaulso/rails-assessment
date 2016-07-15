@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # patch '/shows' => 'shows#edit'
   resources :networks
   get 'networks/:id/shows' => 'shows#index'
+  post '/search' => 'shows#show_search'
   resources :users do
     resources :shows do
       delete :remove_from_user_shows

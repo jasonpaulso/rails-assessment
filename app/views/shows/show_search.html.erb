@@ -1,0 +1,10 @@
+<div>
+  <% if @resp %> 
+    <% @body.each do |show| %>
+    <h2><%= show["show"]["name"]%></h2>
+    <p><%= strip_tags(show["show"]["summary"])%></p>
+
+    <%end%>
+  <%end%>
+    
+</div>

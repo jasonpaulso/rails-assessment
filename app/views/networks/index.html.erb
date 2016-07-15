@@ -1,6 +1,6 @@
 <h1>Shows by Network</h1>
   <% @networks.order(name: :asc).each do |network| %>
-    <table class="table"><thead><th><%=link_to network.name.upcase, network_path(network)%></th></thead>
+    <table class="table"><thead><th><h2><%=link_to network.name.upcase, network_path(network)%></h2></th></thead>
       <tbody>
       <% network.shows.order(title: :asc).each do |show| %>
         <tr ><td style="border:none"><%=link_to show.title.titleize, show_path(show)%></td></tr>
