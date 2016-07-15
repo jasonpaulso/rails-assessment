@@ -41,7 +41,6 @@
       event.preventDefault();
       $(".content").hide();
       $(".search-results").empty();
-      
       var showName = $("#showName").val();
       $.ajax({
         type: "GET",
@@ -55,12 +54,12 @@
               $('.search-results').append("<img src=" + data[i].show.image.original + ">");
               $('.search-results').append("<p>" + data[i].show.network.name + " " + data[i].show.schedule.days[0] + " " + data[i].show.schedule.time + "</p>");
               $('.search-results').append("<p>" + data[i].show.summary + "</p>");
-                }
+            }
           } else {
             $('.search-results').append("<h2>There were no shows matching your search. Please try again.</h2>");
           }
-            }
-          });
+        }
+      });
     });
   });
 

@@ -6,6 +6,7 @@ class ShowsController < ApplicationController
         @user = User.find_by(slug: params[:user_id])
         if !@user.nil?
           @shows = @user.shows
+          render_shows_format
         else
           flash[:error] = "That user does not exist."
           @shows = Show.all
@@ -15,12 +16,14 @@ class ShowsController < ApplicationController
         @network = Network.find_by(slug:params[:id])
         if !@network.nil?
           @shows = @network.shows
+          render_shows_format
         else
           flash[:error] = "That network does not exist."
           redirect_to networks_path
         end
     else
       @shows = Show.all
+      render_shows_format
     end
   end
 
@@ -107,6 +110,13 @@ class ShowsController < ApplicationController
 
   def show_params
     params.require(:show).permit(:title, :day, :time, :description, :url, :network_id, network_attributes: [:name], actors: [:name])
+  end
+
+  def render_shows_format
+      respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @shows}
+    end
   end
 
 end
