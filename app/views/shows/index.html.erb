@@ -37,8 +37,11 @@ $(function() {
         success: function(data){
           if (data.length > 0) {
             for (var i = 0; i < data.length; i++) {
-              $('.shows_index').append("<h2>" + data[i].title+ "</h2>");
-              $('.shows_index').append("<p>" + data[i].network.name + "</p>");
+              var showLocalLink = "/shows/" + data[i].slug;
+              var networkLocalLink = "/networks/" + data[i].network.slug;
+              console.log(data[i]);
+              $('.shows_index').append("<a href='" + showLocalLink + "'><h2>" + data[i].title+ "</h2></a>");
+              $('.shows_index').append("<a href='" + networkLocalLink + "'><p>" + data[i].network.name + "</p></a>");
               $('.shows_index').append("<p> " + data[i].description + "</p>");
             }
           } else {

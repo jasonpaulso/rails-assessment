@@ -51,7 +51,7 @@
             $("#search-results").text("Search Results");
             for (var i = 0; i < data.length; i++) {
               $('.search-results').append("<h2>" + data[i].show.name+ "</h2>");
-              $('.search-results').append("<img src=" + data[i].show.image.original + ">");
+              $('.search-results').append("<a href='" + data[i].show.image.original + "' target='_blank'><img src=" + data[i].show.image.original + "></a>");
               $('.search-results').append("<p>" + data[i].show.network.name + " " + data[i].show.schedule.days[0] + " " + data[i].show.schedule.time + "</p>");
               $('.search-results').append("<p>" + data[i].show.summary + "</p>");
             }
