@@ -1,13 +1,9 @@
 <h1>Welcome to the TV Tracker <%=current_user.name if user_signed_in?%>!</h1>
+<div class="content">
 <h3>Today's User Favorite Show: </h3>
 <h4><%=link_to Show.most_popular_show.title, show_path(Show.most_popular_show)%></h4>
 <p>
   <%=Show.most_popular_show.description%>
 </p>
-<h1>Search for TV Shows</h1>
-<%= form_tag '/search' do %>
-  <%= label_tag :query %>
-  <%= text_field_tag :query %>
-  <%= submit_tag "Search!" %>
-<% end %>
+</div>
 

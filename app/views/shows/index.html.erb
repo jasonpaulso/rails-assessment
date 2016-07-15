@@ -1,5 +1,4 @@
 <h1>Shows by Title</h1>
-<table>
   <% @shows.order(title: :asc).each do |show| %>
   <div class="show_index">
     <h2><%=link_to show.title.titleize, show_path(show)%>, <%=link_to show.network.name.upcase, network_path(show.network)%></h2>

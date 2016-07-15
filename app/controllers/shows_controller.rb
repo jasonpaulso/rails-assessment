@@ -102,22 +102,6 @@ class ShowsController < ApplicationController
     end
   end
 
-  def show_search
-    begin
-      @resp = Faraday.get 'http://api.tvmaze.com/search/shows' do |req|
-          req.params['q'] = params[:query]
-        end
-        body = JSON.parse(@resp.body)
-        if @resp.success?
-          @body = body
-        end
-      render search
-    end
-  end
-
-  def search
-  end
-
 
   private
 

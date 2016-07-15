@@ -28,8 +28,42 @@
 
 
 <div class="container">
-  <%= yield %>
+  <div class="content"><%= yield %></div>
+  <h1 id="search-results"></h1>
+  <div class="search-results"></div>
 </div>
 
 </body>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('#showSearch').submit(function(event) {
+      event.preventDefault();
+      $(".content").hide();
+      $(".search-results").empty();
+      
+      var showName = $("#showName").val();
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "http://api.tvmaze.com/search/shows?q=" + showName,
+        success: function(data){
+          if (data.length > 0) {
+            $("#search-results").text("Search Results");
+            for (var i = 0; i < data.length; i++) {
+              $('.search-results').append("<h2>" + data[i].show.name+ "</h2>");
+              $('.search-results').append("<img src=" + data[i].show.image.original + ">");
+              $('.search-results').append("<p>" + data[i].show.network.name + " " + data[i].show.schedule.days[0] + " " + data[i].show.schedule.time + "</p>");
+              $('.search-results').append("<p>" + data[i].show.summary + "</p>");
+                }
+          } else {
+            $('.search-results').append("<h2>There were no shows matching your search. Please try again.</h2>");
+          }
+            }
+          });
+    });
+  });
+
+</script>
 </html>
+

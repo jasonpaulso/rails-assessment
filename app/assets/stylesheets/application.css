@@ -17,7 +17,9 @@
  /*
   *= require rails_bootstrap_forms
   */
-
+  img {
+    max-height: 10em;
+  }
   div.errors {
     text-align: center;
     font-weight: bold;
@@ -33,3 +35,4 @@ ul  {
   padding-left: 0;
   margin-left: 0;
 }
+
