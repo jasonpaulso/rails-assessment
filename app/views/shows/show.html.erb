@@ -1,10 +1,13 @@
+<div class="content content-highlight">
 <h1><%=@show.title.titleize%></h1>
+
 <h2><%=link_to @show.network.name.upcase, network_path(@show.network)%></h2>
+<div class="show_poster">
+  <img class="poster img-responsive " src="<%=@show.url if @show.url != ""%>" alt="">
+</div>
 <p>
   <%=strip_tags(@show.description)%>
 </p>
-<div class="show_poster">
-  <img src="<%=@show.url if @show.url != ""%>" alt="">
 </div>
 <h3>User's who've collected this show: <%=@show.rating%></h3>
 <br>

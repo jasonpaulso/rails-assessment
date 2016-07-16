@@ -17,8 +17,18 @@
  /*
   *= require rails_bootstrap_forms
   */
-  img {
+/*  body {
+    background-color: grey !important;
+  }*/
+  img.thumbnail {
     max-height: 10em;
+  }
+  .content .poster {
+    margin: 4vh auto;
+    max-height: 60vh;
+  }
+  .index-highlight, .content-highlight {
+    text-align: center;
   }
   div.errors {
     text-align: center;

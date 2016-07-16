@@ -43,7 +43,6 @@
       $(".search-results").empty();
       var showName = $("#showName").val().replace(/ /g, '-');
       var url = "http://api.tvmaze.com/search/shows?q=" + showName;
-      console.log(url);
       $.ajax({
         type: "GET",
         dataType: "json",
@@ -53,7 +52,7 @@
             $("#search-results").text("Search Results");
             for (var i = 0; i < data.length; i++) {
               $('.search-results').append("<h2>" + data[i].show.name+ "</h2>");
-              $('.search-results').append("<a href='" + data[i].show.image.original + "' target='_blank'><img src=" + data[i].show.image.original + "></a>");
+              $('.search-results').append("<a href='" + data[i].show.image.original + "' target='_blank'><img class='thumbnail img-responsive' src=" + data[i].show.image.original + "></a>");
               $('.search-results').append("<p>" + data[i].show.network.name + " " + data[i].show.schedule.days[0] + " " + data[i].show.schedule.time + "</p>");
               $('.search-results').append("<p>" + data[i].show.summary + "</p>");
               $('.search-results').append("<button id='remoteID' data-id='" + data[i].show.id + "'>Add to my shows</button>")
@@ -67,6 +66,7 @@
     $(".search-results").on("click", 'button', function() {
       var remoteID = $(this).data("id");
       var url = "http://api.tvmaze.com/shows/" + remoteID;
+      $(this).hide();
       $.getJSON( url, function ( data ) { 
         $.ajax({
           url: "/shows",
@@ -74,12 +74,16 @@
           data: {show: {
                    title: data.name, 
                    description: data.summary,
+                   time: data.schedule.time,
+                   day: data.schedule.days,
                    url: data.image.original,
                    remote_id: remoteID,
                    network_attributes: {
                     name: data.network.name
                    } },
-          success: function(resp){ alert("Sucess.") }
+          success: function(resp){ 
+
+           }
         }
       });
     });

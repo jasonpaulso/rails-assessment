@@ -1,9 +1,10 @@
+<div class="content index-highlight">
 <h1>Welcome to the TV Tracker <%=current_user.name if user_signed_in?%>!</h1>
-<div class="content">
 <h3>Today's Most Recent Show: </h3>
-<h4><%=link_to Show.last.title, show_path(Show.last)%></h4>
+<h2><%=link_to @show.title, show_path(@show)%></h4>
+<img class="poster img-responsive" src="<%= @show.url %>" alt="">
 <p>
-  <%=strip_tags(Show.last.description)%>
+  <%=strip_tags(@show.description)%>
 </p>
 </div>
 
