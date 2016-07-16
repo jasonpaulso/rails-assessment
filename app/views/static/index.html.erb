@@ -1,9 +1,9 @@
 <h1>Welcome to the TV Tracker <%=current_user.name if user_signed_in?%>!</h1>
 <div class="content">
-<h3>Today's User Favorite Show: </h3>
-<h4><%=link_to Show.most_popular_show.title, show_path(Show.most_popular_show)%></h4>
+<h3>Today's Most Recent Show: </h3>
+<h4><%=link_to Show.last.title, show_path(Show.last)%></h4>
 <p>
-  <%=Show.most_popular_show.description%>
+  <%=strip_tags(Show.last.description)%>
 </p>
 </div>
 

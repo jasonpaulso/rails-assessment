@@ -3,13 +3,6 @@
 
 <h1>Shows by Title</h1>
 <div class="shows_index"></div>
-  <% @shows.order(title: :asc).each do |show| %>
-  <div class="show_index">
-    <h2><%=link_to show.title.titleize, show_path(show)%>, <%=link_to show.network.name.upcase, network_path(show.network)%></h2>
-    <div id="show-<%= show.slug %>"><%= truncate(show.description) %></div>
-    <button type="button" class="btn btn-default js-more" data-id="<%= show.slug %>">More Info</button>
-  </div> 
-    <%end%>
 
 <script type="text/javascript" charset="utf-8">
 $(function() {

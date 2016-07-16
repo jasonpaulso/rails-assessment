@@ -41,11 +41,13 @@
       event.preventDefault();
       $(".content").hide();
       $(".search-results").empty();
-      var showName = $("#showName").val();
+      var showName = $("#showName").val().replace(/ /g, '-');
+      var url = "http://api.tvmaze.com/search/shows?q=" + showName;
+      console.log(url);
       $.ajax({
         type: "GET",
         dataType: "json",
-        url: "http://api.tvmaze.com/search/shows?q=" + showName,
+        url: url,
         success: function(data){
           if (data.length > 0) {
             $("#search-results").text("Search Results");
@@ -65,16 +67,6 @@
     $(".search-results").on("click", 'button', function() {
       var remoteID = $(this).data("id");
       var url = "http://api.tvmaze.com/shows/" + remoteID;
-      // $.ajax({
-      //   type: "GET",
-      //   dataType: "json",
-      //   url: " http://api.tvmaze.com/shows/" + remoteID,
-      //   // method = "OPTIONS";
-      //   success: function(data){
-      //     console.log(data.name);
-      //   }
-      // });
-      // alert("Clicked");
       $.getJSON( url, function ( data ) { 
         $.ajax({
           url: "/shows",
@@ -83,6 +75,7 @@
                    title: data.name, 
                    description: data.summary,
                    url: data.image.original,
+                   remote_id: remoteID,
                    network_attributes: {
                     name: data.network.name
                    } },

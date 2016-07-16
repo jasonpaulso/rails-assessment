@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714224040) do
+ActiveRecord::Schema.define(version: 20160716010708) do
 
   create_table "actors", force: :cascade do |t|
     t.string "name"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160714224040) do
     t.string  "slug"
     t.text    "description"
     t.string  "url"
+    t.integer "remote_id"
   end
 
   add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true

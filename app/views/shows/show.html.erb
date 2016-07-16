@@ -1,7 +1,7 @@
 <h1><%=@show.title.titleize%></h1>
 <h2><%=link_to @show.network.name.upcase, network_path(@show.network)%></h2>
 <p>
-  <%=@show.description%>
+  <%=strip_tags(@show.description)%>
 </p>
 <div class="show_poster">
   <img src="<%=@show.url if @show.url != ""%>" alt="">

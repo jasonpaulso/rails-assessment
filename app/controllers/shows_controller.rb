@@ -59,7 +59,12 @@ class ShowsController < ApplicationController
   end
 
   def create
-    @show = Show.create(show_params)
+    if Show.find_by(remote_id: show_params[:remote_id])
+      @show = Show.find_by(show_params[:remote_id])
+    else
+      @show = Show.create(show_params)
+    end
+
     if @show.save
       current_user.shows << @show
       @network = @show.network
@@ -109,7 +114,7 @@ class ShowsController < ApplicationController
   private
 
   def show_params
-    params.require(:show).permit(:title, :day, :time, :description, :url, :network_id, network_attributes: [:name], actors: [:name])
+    params.require(:show).permit(:title, :day, :time, :description, :url, :remote_id, :network_id, network_attributes: [:name], actors: [:name])
   end
 
   def render_shows_format
