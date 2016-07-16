@@ -36,7 +36,7 @@
 </body>
 
 <script type="text/javascript" charset="utf-8">
-  $(function () {
+  $( document ).ready(function() {
     $('#showSearch').submit(function(event) {
       event.preventDefault();
       $(".content").hide();
@@ -54,14 +54,45 @@
               $('.search-results').append("<a href='" + data[i].show.image.original + "' target='_blank'><img src=" + data[i].show.image.original + "></a>");
               $('.search-results').append("<p>" + data[i].show.network.name + " " + data[i].show.schedule.days[0] + " " + data[i].show.schedule.time + "</p>");
               $('.search-results').append("<p>" + data[i].show.summary + "</p>");
+              $('.search-results').append("<button id='remoteID' data-id='" + data[i].show.id + "'>Add to my shows</button>")
             }
           } else {
             $('.search-results').append("<h2>There were no shows matching your search. Please try again.</h2>");
           }
         }
       });
+    })
+    $(".search-results").on("click", 'button', function() {
+      var remoteID = $(this).data("id");
+      var url = "http://api.tvmaze.com/shows/" + remoteID;
+      // $.ajax({
+      //   type: "GET",
+      //   dataType: "json",
+      //   url: " http://api.tvmaze.com/shows/" + remoteID,
+      //   // method = "OPTIONS";
+      //   success: function(data){
+      //     console.log(data.name);
+      //   }
+      // });
+      // alert("Clicked");
+      $.getJSON( url, function ( data ) { 
+        $.ajax({
+          url: "/shows",
+          type: "POST",
+          data: {show: {
+                   title: data.name, 
+                   description: data.summary,
+                   url: data.image.original,
+                   network_attributes: {
+                    name: data.network.name
+                   } },
+          success: function(resp){ alert("Sucess.") }
+        }
+      });
     });
   });
+  });
+
 
 </script>
 </html>
