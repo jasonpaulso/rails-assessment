@@ -44,6 +44,9 @@ gem 'pry'
 gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'faraday'
+gem 'jquery-turbolinks'
+gem 'bootstrap'
+gem 'rails-assets-tether'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

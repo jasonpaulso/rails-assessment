@@ -1,4 +1,4 @@
-<div class="content content-highlight">
+<div class="content-highlight">
 <h1><%=@show.title.titleize%></h1>
 
 <h2><%=link_to @show.network.name.upcase, network_path(@show.network)%></h2>
@@ -9,23 +9,5 @@
   <%=strip_tags(@show.description)%>
 </p>
 </div>
-<h3>User's who've collected this show: <%=@show.rating%></h3>
-<br>
-<table>
-  <%@show.users.each do |user|%>
-    <tr><td><%=link_to user.name, user%></td></tr>
-  <%end%>
-<table>
-<br>
-
-<ul>
-  <%if user_signed_in? %>
-    <%if current_user.admin?%>
-      <li><%=link_to "ADMIN: Edit this show.", edit_show_path(@show)%></li>
-      <li><%=link_to "ADMIN: Delete this show.", show_path(@show), method: "delete", :data => {:confirm => 'Are you sure you want to delete this show?'} %></li>
-    <%end%>
-    <li><%=link_to "USER: Add to my shows.", user_show_add_to_user_shows_path(current_user.id, @show.slug), method: :post  if !current_user.shows.include?(@show)%></li>
-    <li><%= link_to "USER: Remove From My Shows", user_show_remove_from_user_shows_path(current_user, @show.slug), method: :delete, :data => {:confirm => 'Are you sure you want to remove this show?'}  if current_user.shows.include?(@show)%></li>
-  <%end%>
-</ul>
+<%= render "show_user_options" if user_signed_in?%>
 

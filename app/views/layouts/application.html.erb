@@ -5,18 +5,14 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonmous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <%= render 'layouts/nav' %>
+
 <div class="errors">
   <% if flash[:error] -%>
     <p class='alert alert-danger' role="alert"><%=h flash[:error] %></p>
@@ -26,7 +22,6 @@
   <% end -%>
 </div>
 
-
 <div class="container">
   <div class="content"><%= yield %></div>
   <h1 id="search-results"></h1>
@@ -34,63 +29,5 @@
 </div>
 
 </body>
-
-<script type="text/javascript" charset="utf-8">
-  $( document ).ready(function() {
-    $('#showSearch').submit(function(event) {
-      event.preventDefault();
-      $(".content").hide();
-      $(".search-results").empty();
-      var showName = $("#showName").val().replace(/ /g, '-');
-      var url = "http://api.tvmaze.com/search/shows?q=" + showName;
-      $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: url,
-        success: function(data){
-          if (data.length > 0) {
-            $("#search-results").text("Search Results");
-            for (var i = 0; i < data.length; i++) {
-              $('.search-results').append("<h2>" + data[i].show.name+ "</h2>");
-              $('.search-results').append("<a href='" + data[i].show.image.original + "' target='_blank'><img class='thumbnail img-responsive' src=" + data[i].show.image.original + "></a>");
-              $('.search-results').append("<p>" + data[i].show.network.name + " " + data[i].show.schedule.days[0] + " " + data[i].show.schedule.time + "</p>");
-              $('.search-results').append("<p>" + data[i].show.summary + "</p>");
-              $('.search-results').append("<button id='remoteID' data-id='" + data[i].show.id + "'>Add to my shows</button>")
-            }
-          } else {
-            $('.search-results').append("<h2>There were no shows matching your search. Please try again.</h2>");
-          }
-        }
-      });
-    })
-    $(".search-results").on("click", 'button', function() {
-      var remoteID = $(this).data("id");
-      var url = "http://api.tvmaze.com/shows/" + remoteID;
-      $(this).hide();
-      $.getJSON( url, function ( data ) { 
-        $.ajax({
-          url: "/shows",
-          type: "POST",
-          data: {show: {
-                   title: data.name, 
-                   description: data.summary,
-                   time: data.schedule.time,
-                   day: data.schedule.days,
-                   url: data.image.original,
-                   remote_id: remoteID,
-                   network_attributes: {
-                    name: data.network.name
-                   } },
-          success: function(resp){ 
-
-           }
-        }
-      });
-    });
-  });
-  });
-
-
-</script>
 </html>
 

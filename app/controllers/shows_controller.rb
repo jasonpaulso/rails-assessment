@@ -1,7 +1,6 @@
 class ShowsController < ApplicationController
 
   def index
-    # binding.pry
     if params[:user_id]
         @user = User.find_by(slug: params[:user_id])
         if !@user.nil?
@@ -22,16 +21,21 @@ class ShowsController < ApplicationController
           redirect_to networks_path
         end
     else
-      @shows = Show.all
+      @shows = Show.all.order(title: :asc)
       render_shows_format
     end
   end
 
   def show
       @show = Show.find_by(slug:params[:id])
-      respond_to do |format|
-        format.html {render :show}
-        format.json {render json: @show}
+      if !!@show
+        respond_to do |format|
+          format.html {render :show}
+          format.json {render json: @show}
+        end
+      else
+        flash[:error] = "That show does not exist."
+        redirect_to shows_path
       end
   end
 
