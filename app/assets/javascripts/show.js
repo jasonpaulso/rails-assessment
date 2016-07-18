@@ -5,13 +5,7 @@ $(document).ready(function() {
   addShow();  
 });
 
-function showSearch() {
-  $('#showSearch').submit(function(event) {
-    event.preventDefault();
-    $(".content").hide();
-    $(".search-results").empty();
-
-    function Show(showData) {
+function ShowFromSearch(showData) {
       this.title = showData.name;
       this.url = showData.image.original;
       this.description = showData.summary;
@@ -19,8 +13,36 @@ function showSearch() {
       this.time = showData.schedule.time;
       this.days = showData.schedule.days;
       this.remoteID = showData.id;
-    };
+};
 
+ShowFromSearch.prototype.convertShowTime = function() {  
+
+  if (this.time != "") {
+    var time_part_array = this.time.split(":");
+    var ampm = 'AM';
+    if (time_part_array[0] >= 12) {
+        ampm = 'PM';
+    }
+    if (time_part_array[0] > 12) {
+        time_part_array[0] = time_part_array[0] - 12;
+    }
+    formatted_time = time_part_array[0] + ':' + time_part_array[1] + ' ' + ampm;
+    return formatted_time;
+  } else {
+    return "Time is not available."
+  }
+}
+
+ShowFromSearch.prototype.print = function () {
+  console.log(this.title);
+}
+
+function showSearch() {
+  $('#showSearch').submit(function(event) {
+    event.preventDefault();
+    $(".content").hide();
+    $(".search-results").empty();
+  
     var showURLName = $("#showName").val().replace(/ /g, '-');
     var url = "http://api.tvmaze.com/search/shows?q=" + showURLName;
 
@@ -33,16 +55,17 @@ function showSearch() {
           $("#search-results").text("Search Results");
           for (var i = 0; i < data.length; i++) {
             var showData = data[i].show;
-            var newShow = new Show(showData);
+            var newShow = new ShowFromSearch(showData);
             var divID = "search-result-" + newShow.remoteID;
             var showDiv = $('<div/>', { id: divID});
             showDiv.append("<h2>" + newShow.title + "</h2>");
             showDiv.append("<a href='" + newShow.url + "' target='_blank'><img class='thumbnail img-responsive' src=" + newShow.url + "></a>");
-            showDiv.append("<p>" + newShow.network + " " + newShow.days[0] + " " + newShow.time + "</p>");
+            showDiv.append("<p>" + newShow.network + " " + newShow.days[0] + " @ " + newShow.convertShowTime() + "</p>");
             showDiv.append("<p>" + newShow.description + "</p>");
             showDiv.append("<button class='addShow' id='remoteID' data-id='" + newShow.remoteID + "'>Add to my shows</button>");
+            // showDiv.append(newShow.convertShowTime());
             $(".search-results").append(showDiv);
-            console.log(newShow.time[0]);
+            // alert(newShow.print);
           }
         } else {
           $('.search-results').append("<h2>There were no shows matching your search. Please try again.</h2>");
