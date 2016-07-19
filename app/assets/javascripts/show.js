@@ -182,7 +182,7 @@ function loadShowShowPage() {
         var showDiv = $('<div/>', { id: divID});
         showDiv.append("<a href='" + showLocalLink + "'><h1>" + show.title+ "</h1></a>");
         showDiv.append("<a href='" + networkLocalLink + "'><p>" + show.network.name + "</p></a>");
-        showDiv.append("<img src='" + showImage + "'>");
+        showDiv.append("<img class='poster img-responsive' src='" + showImage + "'>");
         var showBodyID = "show-body-" + show.slug;
         var showMore = $('<div/>', {id:showBodyID, class:"showMore"});
         showDiv.append(showMore);

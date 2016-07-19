@@ -1,11 +1,8 @@
 <div class="content index-highlight">
 <h1>Welcome to the TV Tracker <%=current_user.name if user_signed_in?%>!</h1>
 <h3>Today's Most Recent Show: </h3>
-<h2><%=link_to @show.title, show_path(@show)%></h4>
-<h3><%= @show.day%> <%= @show.time%></h3>
-<img class="poster img-responsive" src="<%= @show.url %>" alt="">
-<p>
-  <%=strip_tags(@show.description)%>
-</p>
+<div class="showsShow content-highlight" data-id="<%=@show.slug%>"></div>
 </div>
+
+
 
