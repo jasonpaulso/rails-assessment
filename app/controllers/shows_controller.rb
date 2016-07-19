@@ -63,13 +63,16 @@ class ShowsController < ApplicationController
   end
 
   def create
-    if Show.find_by(remote_id: show_params[:remote_id])
+
+    if show_params[:remote_id] != nil
       if Show.find_by(remote_id: show_params[:remote_id]).remote_id != nil
         @show = Show.find_by(remote_id: show_params[:remote_id])
       end
     else
       @show = Show.create(show_params)
+
     end
+    
     if @show.save
       current_user.shows << @show
       @network = @show.network
