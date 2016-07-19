@@ -34,10 +34,8 @@ class ShowsController < ApplicationController
           format.json {render json: @show}
         end
       else
-        if params[:id] != "undefined"
           flash[:error] = "That show does not exist."
           redirect_to shows_path
-        end
       end
   end
 
