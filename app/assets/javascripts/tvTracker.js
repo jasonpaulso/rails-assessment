@@ -3,6 +3,7 @@ $(document).ready(function() {
   showSearch();
   addShow();
   createNewUserShow();
+  searchShowMore();
 });
 
 function ShowSearchResult(showData) {
@@ -61,19 +62,10 @@ function showSearch() {
             showDiv.append("<h2>" + newShow.title + "</h2>");
             showDiv.append("<img class='thumbnail img-responsive' src=" + newShow.url + ">");
             showDiv.append("<p>" + newShow.network + " " + newShow.days[0] + " @ " + newShow.convertShowTime() + "</p>");
-            showDiv.append("<p>" + newShow.description + "</p>");
-
-            // var showBodyID = "show-body-" + show.slug;
-            // var showMore = $('<div/>', {id:showBodyID, class:"showMore"});
-            // showDiv.append(showMore);
-            // showDiv.append("<button class='js-more btn btn-default'  data-id='" + show.slug + "'>" + "Show More" + "</button>");
-            // $('.shows_index').append(showDiv);
-
-
-
-
-
-
+            var showBodyID = "show-body-" + newShow.remoteID;
+            var showMore = $('<div/>', {id:showBodyID, class:"showMore"});
+            showDiv.append(showMore);
+            showDiv.append("<button class='search-js-more btn btn-default'  data-id='" + newShow.remoteID + "'>" + "Show More" + "</button>");
             showDiv.append("<button class='addShow btn btn-default' id='remoteID' data-id='" + newShow.remoteID + "'>Add to my shows</button>");
             $(".search-results").append(showDiv);
           }
@@ -83,6 +75,28 @@ function showSearch() {
       }
     });
   })
+}
+
+function searchShowMore() {
+  event.preventDefault();
+  $(document).on('click', '.search-js-more', function(){
+    var button = $(this);
+    var id = $(this).data("id");
+    var showID = "#show-body-" + id;
+    var url = "http://api.tvmaze.com/shows/" + id;
+    if ($(showID).hasClass("show")) {
+      $(showID).removeClass("show");
+      $(showID).hide();
+      button.text("Show More");
+    } else {
+      $.getJSON(url, function(data) {
+        $(showID).html(data.summary);
+        $(showID).addClass("show");
+        button.text("Show Less");
+      });
+    }
+
+  });
 }
 
 function addShow() {
@@ -128,7 +142,6 @@ function addShow() {
 
 function createNewUserShow() {
     $('.new_show_form form').submit(function(event) {
-      // $(this).hide();
       event.preventDefault();
       var values = $(this).serialize();
       var posting = $.post('/shows', values);
