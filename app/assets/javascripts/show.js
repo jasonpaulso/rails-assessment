@@ -18,15 +18,15 @@ function ShowFromSearch(showData) {
 ShowFromSearch.prototype.convertShowTime = function() {  
 
   if (this.time != "") {
-    var time_part_array = this.time.split(":");
+    var time_array = this.time.split(":");
     var ampm = 'AM';
-    if (time_part_array[0] >= 12) {
+    if (time_array[0] >= 12) {
         ampm = 'PM';
     }
-    if (time_part_array[0] > 12) {
-        time_part_array[0] = time_part_array[0] - 12;
+    if (time_array[0] > 12) {
+        time_array[0] = time_array[0] - 12;
     }
-    formatted_time = time_part_array[0] + ':' + time_part_array[1] + ' ' + ampm;
+    formatted_time = time_array[0] + ':' + time_array[1] + ' ' + ampm;
     return formatted_time;
   } else {
     return "Time is not available."
@@ -63,9 +63,7 @@ function showSearch() {
             showDiv.append("<p>" + newShow.network + " " + newShow.days[0] + " @ " + newShow.convertShowTime() + "</p>");
             showDiv.append("<p>" + newShow.description + "</p>");
             showDiv.append("<button class='addShow' id='remoteID' data-id='" + newShow.remoteID + "'>Add to my shows</button>");
-            // showDiv.append(newShow.convertShowTime());
             $(".search-results").append(showDiv);
-            // alert(newShow.print);
           }
         } else {
           $('.search-results').append("<h2>There were no shows matching your search. Please try again.</h2>");
@@ -90,7 +88,7 @@ function addShow() {
           title: data.name, 
           description: data.summary,
           time: data.schedule.time,
-          day: data.schedule.days,
+          day: data.schedule.days[0],
           url: data.image.original,
           remote_id: remoteID,
           network_attributes: {
@@ -164,3 +162,5 @@ function loadShows() {
     }
   });
 }
+
+

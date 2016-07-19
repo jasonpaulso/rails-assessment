@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716030828) do
+ActiveRecord::Schema.define(version: 20160719001940) do
 
   create_table "actors", force: :cascade do |t|
     t.string "name"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20160716030828) do
     t.string  "title"
     t.integer "actor_id"
     t.integer "network_id"
-    t.text    "day",         default: "--- []\n"
+    t.text    "day",         default: "Shedule unknown. Please edit this show to add its air day."
     t.string  "time"
     t.string  "slug"
     t.text    "description"
