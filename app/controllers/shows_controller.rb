@@ -77,8 +77,9 @@ class ShowsController < ApplicationController
       render json: @show, status: 201, notice: 'Show was successfully created.'
     else
       @networks = Network.all
-      flash[:error] = "Please review the errors below."
-      render :new
+      # flash[:error] = "Please review the errors below."
+      # render :new
+      render json: { errors: @show.errors }, status: 422
     end
   end
 

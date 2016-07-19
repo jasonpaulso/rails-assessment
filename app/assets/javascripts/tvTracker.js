@@ -155,6 +155,13 @@ function createNewUserShow() {
         showDiv.append("<p> Network: " + data.network.name + "</p>");
         $("#newShow").append(showDiv);
       });
+      posting.error(function(xhr, status, error) {
+        // var err = eval("(" + xhr.responseText + ")");
+        // for(var prop in err) {
+        //   alert("Errors:" + "Network:" + err[prop]["network"]);
+        // }
+        alert("There are errors in your submission. Please complete all fields and try to create your show again.")
+      })
 
     });
   }
