@@ -1,14 +1,23 @@
 $(document).ready(function() {
-  loadShowsIndex();
-  loadShowShowPage();
+  
+  
   showMore();
   showSearch();
   addShow();
-  loadNetworkShows();
-  createNewUserShow()
+  
+  createNewUserShow();
   // loadNetworks();  
 });
 
+$('.networks.index').ready(function() {
+  loadNetworkShows();
+});
+$('.shows.index').ready(function(){
+  loadShowsIndex();
+});
+$('.shows.show').ready(function(){
+  loadShowShowPage();
+});
 function ShowFromSearch(showData) {
       this.title = showData.name;
       this.url = showData.image.original;
@@ -222,6 +231,7 @@ function loadNetworkShows() {
       var values = $(this).serialize();
       var posting = $.post('/shows', values);
       posting.done(function(data) {
+        $('#newShow').show();
         var showDiv = $('<div/>', {class:"content-highlight"});
         showDiv.append("<h2>Title: " + data.title + "</h2>");
         showDiv.append("<img src='" + data.url +"'>");

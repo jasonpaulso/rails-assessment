@@ -15,7 +15,7 @@ class NetworksController < ApplicationController
         f.json { render json: @network }
       end
     else
-      # flash[:error] = "That network does not exist."
+      flash[:error] = "That network does not exist."
       redirect_to networks_path
     end
   end
