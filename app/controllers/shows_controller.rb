@@ -4,24 +4,24 @@ class ShowsController < ApplicationController
     if params[:user_id]
         @user = User.find_by(slug: params[:user_id])
         if !@user.nil?
-          @shows = @user.shows
+          @shows = @user.shows.order(:day)
           render_shows_format
         else
           flash[:error] = "That user does not exist."
-          @shows = Show.all
+          @shows = Show.all.order(:day)
           redirect_to shows_path
         end
     elsif params[:id]
         @network = Network.find_by(slug:params[:id])
         if !@network.nil?
-          @shows = @network.shows
+          @shows = @network.shows.order(:day)
           render_shows_format
         else
           flash[:error] = "That network does not exist."
           redirect_to networks_path
         end
     else
-      @shows = Show.all.order(title: :asc)
+      @shows = Show.all.order(:day)
       render_shows_format
     end
   end

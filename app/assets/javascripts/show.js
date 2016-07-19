@@ -1,5 +1,6 @@
 $(document).ready(function() {
-  loadShows();
+  loadShowsIndex();
+  loadShowShowPage();
   showMore();
   showSearch();
   addShow();
@@ -135,7 +136,7 @@ function showMore() {
   });
 }
 
-function loadShows() {
+function loadShowsIndex() {
   event.preventDefault();
   $.ajax({
     type: "GET",
@@ -165,6 +166,31 @@ function loadShows() {
     }
   });
 }
+function loadShowShowPage() {
+    event.preventDefault();
+    var showSlug = $('.showsShow').data("id");
+    var showLocalLink = "/shows/" + showSlug;
+    console.log(showLocalLink);
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: showLocalLink,
+      success: function(show){
+        var networkLocalLink = "/networks/" + show.network.slug;
+        var showImage = show.url;
+        var divID = "show-" + show.slug;
+        var showDiv = $('<div/>', { id: divID});
+        showDiv.append("<a href='" + showLocalLink + "'><h1>" + show.title+ "</h1></a>");
+        showDiv.append("<a href='" + networkLocalLink + "'><p>" + show.network.name + "</p></a>");
+        showDiv.append("<img src='" + showImage + "'>");
+        var showBodyID = "show-body-" + show.slug;
+        var showMore = $('<div/>', {id:showBodyID, class:"showMore"});
+        showDiv.append(showMore);
+        showDiv.append("<button class='js-more' data-id='" + show.slug + "'>" + "Show More" + "</button>");
+        $('.showsShow').append(showDiv);
+      }
+    });
+  }
 
 function loadNetworkShows() {
   event.preventDefault();
@@ -196,7 +222,6 @@ function loadNetworkShows() {
       var values = $(this).serialize();
       var posting = $.post('/shows', values);
       posting.done(function(data) {
-        console.log(data);
         var showDiv = $('<div/>', {class:"content-highlight"});
         showDiv.append("<h2>Title: " + data.title + "</h2>");
         showDiv.append("<img src='" + data.url +"'>");

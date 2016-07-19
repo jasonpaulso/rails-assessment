@@ -1,13 +1,3 @@
-<div class="content-highlight">
-<h1><%=@show.title.titleize%></h1>
-
-<h2><%=link_to @show.network.name.upcase, network_path(@show.network)%></h2>
-<div class="show_poster">
-  <img class="poster img-responsive " src="<%=@show.url if @show.url != ""%>" alt="">
-</div>
-<p>
-  <%=strip_tags(@show.description)%>
-</p>
-</div>
+<div class="showsShow content-highlight" data-id="<%=@show.slug%>"></div>
 <%= render "show_user_options" if user_signed_in?%>
 
