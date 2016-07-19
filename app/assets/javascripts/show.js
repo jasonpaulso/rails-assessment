@@ -59,7 +59,7 @@ function showSearch() {
             var divID = "search-result-" + newShow.remoteID;
             var showDiv = $('<div/>', { id: divID});
             showDiv.append("<h2>" + newShow.title + "</h2>");
-            showDiv.append("<a href='" + newShow.url + "' target='_blank'><img class='thumbnail img-responsive' src=" + newShow.url + "></a>");
+            showDiv.append("<img class='thumbnail img-responsive' src=" + newShow.url + ">");
             showDiv.append("<p>" + newShow.network + " " + newShow.days[0] + " @ " + newShow.convertShowTime() + "</p>");
             showDiv.append("<p>" + newShow.description + "</p>");
             showDiv.append("<button class='addShow' id='remoteID' data-id='" + newShow.remoteID + "'>Add to my shows</button>");
@@ -80,6 +80,7 @@ function addShow() {
   $(".search-results").on("click", 'button.addShow', function() {
     var remoteID = $(this).data("id");
     var url = "http://api.tvmaze.com/shows/" + remoteID;
+    var divID = "search-result-" + remoteID;
     $(this).hide();
     $.getJSON( url, function ( data ) { 
       $.ajax({
@@ -95,8 +96,16 @@ function addShow() {
           network_attributes: {
             name: data.network.name
           } },
-          success: function(resp){ 
-
+          success: function(){ 
+            console.log();
+          },
+          error: function(){ 
+            $(document).ajaxError(function (e, xhr, settings) {
+        if (xhr.status == 401) {
+          $("button.addShow").hide();
+           alert(xhr.responseText);
+        }
+    });
           }
         }
       });
