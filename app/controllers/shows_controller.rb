@@ -63,8 +63,7 @@ class ShowsController < ApplicationController
   end
 
   def create
-
-    if show_params[:remote_id] != nil
+    if params[:remote_id] != nil
       if Show.find_by(remote_id: show_params[:remote_id]).remote_id != nil
         @show = Show.find_by(remote_id: show_params[:remote_id])
       end

@@ -57,12 +57,12 @@ function showSearch() {
             var showData = data[i].show;
             var newShow = new ShowFromSearch(showData);
             var divID = "search-result-" + newShow.remoteID;
-            var showDiv = $('<div/>', { id: divID});
+            var showDiv = $('<div/>', { id: divID, class:"bordered"});
             showDiv.append("<h2>" + newShow.title + "</h2>");
             showDiv.append("<img class='thumbnail img-responsive' src=" + newShow.url + ">");
             showDiv.append("<p>" + newShow.network + " " + newShow.days[0] + " @ " + newShow.convertShowTime() + "</p>");
             showDiv.append("<p>" + newShow.description + "</p>");
-            showDiv.append("<button class='addShow' id='remoteID' data-id='" + newShow.remoteID + "'>Add to my shows</button>");
+            showDiv.append("<button class='addShow btn btn-default' id='remoteID' data-id='" + newShow.remoteID + "'>Add to my shows</button>");
             $(".search-results").append(showDiv);
           }
         } else {
@@ -133,14 +133,15 @@ function showMore() {
 }
 
 function createNewUserShow() {
-    $('form').submit(function(event) {
-      $(this).hide();
+    $('.new_show_form form').submit(function(event) {
+      // $(this).hide();
       event.preventDefault();
       var values = $(this).serialize();
       var posting = $.post('/shows', values);
       posting.done(function(data) {
         $('#newShow').show();
         var showDiv = $('<div/>', {class:"content-highlight"});
+        showDiv.append("<h1>Your New Show:</h1>");
         showDiv.append("<h2>Title: " + data.title + "</h2>");
         showDiv.append("<img src='" + data.url +"'>");
         showDiv.append("<p> Description: " + data.description + "</p>");
