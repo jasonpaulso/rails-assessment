@@ -4,20 +4,22 @@ $(document).ready(function() {
   showMore();
   showSearch();
   addShow();
-  
+  loadShowShowPage();
   createNewUserShow();
+  loadShowsIndex();
+  loadNetworkShows();
   // loadNetworks();  
 });
 
-$('.networks.index').ready(function() {
-  loadNetworkShows();
-});
-$('.shows.index').ready(function(){
-  loadShowsIndex();
-});
-$('.shows.show').ready(function(){
-  loadShowShowPage();
-});
+// $('.networks.index').ready(function() {
+  
+// });
+// $('.shows.index').ready(function(){
+  
+// });
+// $('.shows.show').ready(function(){
+  
+// });
 function ShowFromSearch(showData) {
       this.title = showData.name;
       this.url = showData.image.original;
