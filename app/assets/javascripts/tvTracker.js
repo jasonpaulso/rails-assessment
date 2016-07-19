@@ -62,6 +62,18 @@ function showSearch() {
             showDiv.append("<img class='thumbnail img-responsive' src=" + newShow.url + ">");
             showDiv.append("<p>" + newShow.network + " " + newShow.days[0] + " @ " + newShow.convertShowTime() + "</p>");
             showDiv.append("<p>" + newShow.description + "</p>");
+
+            // var showBodyID = "show-body-" + show.slug;
+            // var showMore = $('<div/>', {id:showBodyID, class:"showMore"});
+            // showDiv.append(showMore);
+            // showDiv.append("<button class='js-more btn btn-default'  data-id='" + show.slug + "'>" + "Show More" + "</button>");
+            // $('.shows_index').append(showDiv);
+
+
+
+
+
+
             showDiv.append("<button class='addShow btn btn-default' id='remoteID' data-id='" + newShow.remoteID + "'>Add to my shows</button>");
             $(".search-results").append(showDiv);
           }
@@ -112,27 +124,7 @@ function addShow() {
     });
   });
 }
-function showMore() {
-  event.preventDefault();
-  $(document).on('click', '.js-more', function(){
-    var button = $(this);
-    var id = $(this).data("id");
-    var showID = "#show-body-" + id;
-    if ($(showID).hasClass("show")) {
-      $(showID).removeClass("show");
-      $(showID).hide();
-      button.text("Show More");
-    } else {
-      $.getJSON("/shows/" + id, function(data) {
-        console.log(showID);
-        $(showID).html(data.description);
-        $(showID).addClass("show");
-        button.text("Show Less");
-      });
-    }
 
-  });
-}
 
 function createNewUserShow() {
     $('.new_show_form form').submit(function(event) {

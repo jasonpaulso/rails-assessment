@@ -62,3 +62,24 @@ function loadShowShowPage() {
     });
     }
   }
+  function showMore() {
+  event.preventDefault();
+  $(document).on('click', '.js-more', function(){
+    var button = $(this);
+    var id = $(this).data("id");
+    var showID = "#show-body-" + id;
+    if ($(showID).hasClass("show")) {
+      $(showID).removeClass("show");
+      $(showID).hide();
+      button.text("Show More");
+    } else {
+      $.getJSON("/shows/" + id, function(data) {
+        console.log(showID);
+        $(showID).html(data.description);
+        $(showID).addClass("show");
+        button.text("Show Less");
+      });
+    }
+
+  });
+}
