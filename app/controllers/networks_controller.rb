@@ -15,10 +15,8 @@ class NetworksController < ApplicationController
         f.json { render json: @network }
       end
     else
-      if params[:id] != "undefined"
         flash[:error] = "That network does not exist."
         redirect_to networks_path
-      end
     end
   end
 
