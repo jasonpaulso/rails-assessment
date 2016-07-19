@@ -16,7 +16,6 @@ function ShowSearchResult(showData) {
 };
 
 ShowSearchResult.prototype.convertShowTime = function() {  
-
   if (this.time != "") {
     var time_array = this.time.split(":");
     var ampm = 'AM';
@@ -78,19 +77,21 @@ function addShow() {
     var url = "http://api.tvmaze.com/shows/" + remoteID;
     var divID = "search-result-" + remoteID;
     $(this).hide();
-    $.getJSON( url, function ( data ) { 
+    $.getJSON( url, function ( data ) {
+    var newShow = new ShowSearchResult(data); 
+    console.log(newShow);
       $.ajax({
         url: "/shows",
         type: "POST",
         data: {show: {
-          title: data.name, 
-          description: data.summary,
-          time: data.schedule.time,
-          day: data.schedule.days[0],
-          url: data.image.original,
-          remote_id: remoteID,
+          title: newShow.title, 
+          description: newShow.description,
+          time: newShow.time.convertShowTime,
+          day: newShow.days[0],
+          url: newShow.url,
+          remote_id: newShow.remoteID,
           network_attributes: {
-            name: data.network.name
+            name: newShow.network
           } },
           success: function(){ 
             console.log();

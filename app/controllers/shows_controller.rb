@@ -71,7 +71,6 @@ class ShowsController < ApplicationController
       @show = Show.create(show_params)
 
     end
-    
     if @show.save
       current_user.shows << @show
       @network = @show.network
