@@ -191,16 +191,18 @@ function loadNetworkShows() {
 }
    function createNewUserShow() {
     $('form').submit(function(event) {
-
+      $(this).hide();
       event.preventDefault();
       var values = $(this).serialize();
       var posting = $.post('/shows', values);
       posting.done(function(data) {
         console.log(data);
-        $("#newShow").append("<h2>Title: " + data.title + "</h2>");
-        $("#newShow").append("<img class='thumbnail' src='" + data.url +"'>");
-        $("#newShow").append("<p> Description: " + data.description + "</p>");
-        $("#newShow").append("<p> Network: " + data.network.name + "</p>");
+        var showDiv = $('<div/>', {class:"content-highlight"});
+        showDiv.append("<h2>Title: " + data.title + "</h2>");
+        showDiv.append("<img src='" + data.url +"'>");
+        showDiv.append("<p> Description: " + data.description + "</p>");
+        showDiv.append("<p> Network: " + data.network.name + "</p>");
+        $("#newShow").append(showDiv);
       });
 
     });
