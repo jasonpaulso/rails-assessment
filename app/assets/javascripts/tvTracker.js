@@ -69,6 +69,15 @@ function showSearch() {
     });
   })
 }
+function CreateNewShowFromSearch(showData) {
+      this.title = showData.name;
+      this.url = showData.image.original;
+      this.description = showData.summary;
+      this.network = showData.network.name;
+      this.time = showData.schedule.time;
+      this.days = showData.schedule.days;
+      this.remoteID = showData.id;
+};
 
 function addShow() {
   event.preventDefault();
@@ -86,7 +95,7 @@ function addShow() {
         data: {show: {
           title: newShow.title, 
           description: newShow.description,
-          time: newShow.time.convertShowTime,
+          time: newShow.convertShowTime(),
           day: newShow.days[0],
           url: newShow.url,
           remote_id: newShow.remoteID,
