@@ -13,7 +13,7 @@ Specs:
 - [x] Translate JSON responses into js model objects
   - show search results are translated into js model via ShowSearchResult() in tvTracker.js. 
 - [x] At least one of the js model objects must have at least one method added by your code to the prototype
-  The ShowSearchResult() function has ShowSearchResult.prototype.convertShowTime, which converts the 24hr air time from the API source to standard 12 hr am/pm time.
+  - the ShowSearchResult() function has ShowSearchResult.prototype.convertShowTime, which converts the 24hr air time from the API source to standard 12 hr am/pm time.
 
 Confirm
 - [x] You have a large number of small Git commits
