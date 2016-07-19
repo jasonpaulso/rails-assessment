@@ -25,6 +25,9 @@ ShowSearchResult.prototype.convertShowTime = function() {
     if (time_array[0] > 12) {
         time_array[0] = time_array[0] - 12;
     }
+    if (ampm == 'AM' && time_array[0] == 00) {
+      time_array[0] = "01";
+    }
     formatted_time = time_array[0] + ':' + time_array[1] + ' ' + ampm;
     return formatted_time;
   } else {
@@ -69,15 +72,6 @@ function showSearch() {
     });
   })
 }
-function CreateNewShowFromSearch(showData) {
-      this.title = showData.name;
-      this.url = showData.image.original;
-      this.description = showData.summary;
-      this.network = showData.network.name;
-      this.time = showData.schedule.time;
-      this.days = showData.schedule.days;
-      this.remoteID = showData.id;
-};
 
 function addShow() {
   event.preventDefault();
