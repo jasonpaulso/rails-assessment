@@ -26,7 +26,7 @@ function loadShowsIndex() {
           var showBodyID = "show-body-" + show.slug;
           var showMore = $('<div/>', {id:showBodyID, class:"showMore"});
           showDiv.append(showMore);
-          showDiv.append("<button class='js-more' data-id='" + show.slug + "'>" + "Show More" + "</button>");
+          showDiv.append("<button class='js-more btn btn-default'  data-id='" + show.slug + "'>" + "Show More" + "</button>");
           $('.shows_index').append(showDiv);
         }
       } else {
@@ -55,7 +55,7 @@ function loadShowShowPage() {
         var showBodyID = "show-body-" + show.slug;
         var showMore = $('<div/>', {id:showBodyID, class:"showMore"});
         showDiv.append(showMore);
-        showDiv.append("<button class='js-more' data-id='" + show.slug + "'>" + "Show More" + "</button>");
+        showDiv.append("<button class='js-more btn btn-default' data-id='" + show.slug + "'>" + "Show More" + "</button>");
         $('.showsShow').append(showDiv);
       }
     });
