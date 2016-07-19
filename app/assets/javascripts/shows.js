@@ -19,9 +19,9 @@ function loadShowsIndex() {
           var networkLocalLink = "/networks/" + show.network.slug;
           var showThumbnail = show.url;
           var divID = "show-" + show.slug;
-          var showDiv = $('<div/>', { id: divID});
+          var showDiv = $('<div/>', { id: divID, class:"bordered"});
           showDiv.append("<a href='" + showLocalLink + "'><h2>" + show.title+ "</h2></a>");
-          showDiv.append("<a href='" + showLocalLink + "'><img src='" + showThumbnail + "' class='thumbnail'></a>");
+          showDiv.append("<img src='" + showThumbnail + "' class='thumbnail img-responsive'>");
           showDiv.append("<a href='" + networkLocalLink + "'><p>" + show.network.name + "</p></a>");
           var showBodyID = "show-body-" + show.slug;
           var showMore = $('<div/>', {id:showBodyID, class:"showMore"});
