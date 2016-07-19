@@ -7,8 +7,8 @@ class Show < ActiveRecord::Base
   has_many :user_shows
   has_many :users, through: :user_shows
 
-  has_many :show_actors
-  has_many :actors, through: :show_actors
+  # has_many :show_actors
+  # has_many :actors, through: :show_actors
 
 
   validates_presence_of :network

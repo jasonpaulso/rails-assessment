@@ -1,6 +1,10 @@
 class NetworksController < ApplicationController
   def index
     @networks = Network.all
+    respond_to do |f|
+        f.html { render :index }
+        f.json { render json: @networks }
+    end
   end
 
   def show
@@ -11,7 +15,7 @@ class NetworksController < ApplicationController
         f.json { render json: @network }
       end
     else
-      flash[:error] = "That network does not exist."
+      # flash[:error] = "That network does not exist."
       redirect_to networks_path
     end
   end

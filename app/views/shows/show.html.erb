@@ -9,6 +9,5 @@
   <%=strip_tags(@show.description)%>
 </p>
 </div>
-<%= render partial: "show" %>
 <%= render "show_user_options" if user_signed_in?%>
 

@@ -1,10 +1,2 @@
 <h1>Welcome to the <%=@network.name%> Page!</h1>
-<table class="table">
-<tbody>
-  <%if !@network.shows.empty?%>
-  <%@network.shows.order(title: :asc).each do |show|%>
-    <tr ><td style="border:none"><%=link_to show.title, show_path(show)%></td></tr>
-    <%end%>
-    <%end%>
-</tbody>
-</table>
+<div class="networkShows" data-id="<%=@network.slug%>"></div>
