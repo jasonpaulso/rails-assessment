@@ -42,10 +42,8 @@ function showSearch() {
     event.preventDefault();
     $(".content").hide();
     $(".search-results").empty();
-  
     var showURLName = $("#showName").val().replace(/ /g, '-');
     var url = "http://api.tvmaze.com/search/shows?q=" + showURLName;
-
     $.ajax({
       type: "GET",
       dataType: "json",
