@@ -5,7 +5,7 @@ $(document).ready(function() {
   createNewUserShow();
 });
 
-function ShowFromSearch(showData) {
+function ShowSearchResult(showData) {
       this.title = showData.name;
       this.url = showData.image.original;
       this.description = showData.summary;
@@ -15,7 +15,7 @@ function ShowFromSearch(showData) {
       this.remoteID = showData.id;
 };
 
-ShowFromSearch.prototype.convertShowTime = function() {  
+ShowSearchResult.prototype.convertShowTime = function() {  
 
   if (this.time != "") {
     var time_array = this.time.split(":");
@@ -33,7 +33,7 @@ ShowFromSearch.prototype.convertShowTime = function() {
   }
 }
 
-ShowFromSearch.prototype.print = function () {
+ShowSearchResult.prototype.print = function () {
   console.log(this.title);
 }
 
@@ -55,7 +55,7 @@ function showSearch() {
           $("#search-results").text("Search Results");
           for (var i = 0; i < data.length; i++) {
             var showData = data[i].show;
-            var newShow = new ShowFromSearch(showData);
+            var newShow = new ShowSearchResult(showData);
             var divID = "search-result-" + newShow.remoteID;
             var showDiv = $('<div/>', { id: divID, class:"bordered"});
             showDiv.append("<h2>" + newShow.title + "</h2>");
