@@ -58,6 +58,7 @@ function showSearch() {
           for (var i = 0; i < data.length; i++) {
             var showData = data[i].show;
             var newShow = new ShowSearchResult(showData);
+            console.log(newShow);
             var divID = "search-result-" + newShow.remoteID;
             var showDiv = $('<div/>', { id: divID, class:"bordered"});
             showDiv.append("<h2>" + newShow.title + "</h2>");
