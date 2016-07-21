@@ -4,7 +4,6 @@ $(document).ready(function() {
   addShow();
   createNewUserShow();
   searchShowMore();
-  loadUserShowPage();
 });
 
 function ShowSearchResult(showData) {
@@ -24,11 +23,11 @@ ShowSearchResult.prototype.convertShowTime = function() {
     if (time_array[0] >= 12) {
         ampm = 'PM';
     }
-    if (time_array[0] > 12) {
+    if (time_array[0] > 13) {
         time_array[0] = time_array[0] - 12;
     }
-    if (ampm == 'AM' && time_array[0] == 00) {
-      time_array[0] = "01";
+    if (ampm == 'AM' && time_array[0] == "00") {
+      time_array[0] = "12";
     }
     formatted_time = time_array[0] + ':' + time_array[1] + ' ' + ampm;
     return formatted_time;
@@ -56,9 +55,10 @@ function showSearch() {
         if (data.length > 0) {
           $("#search-results").text("Search Results");
           for (var i = 0; i < data.length; i++) {
+            // console.log(data[i]);
             var showData = data[i].show;
             var newShow = new ShowSearchResult(showData);
-            console.log(newShow);
+            // console.log(newShow);
             var divID = "search-result-" + newShow.remoteID;
             var showDiv = $('<div/>', { id: divID, class:"bordered"});
             showDiv.append("<h2>" + newShow.title + "</h2>");
@@ -165,28 +165,6 @@ function createNewUserShow() {
         alert("There are errors in your submission. Please complete all fields and try to create your show again.")
       })
 
-    });
-  }
-    function loadUserShowPage() {
-    event.preventDefault();
-    var userSlug = $('.showUser').data("id");
-    var userLocalLink = "/users/" + userSlug;
-    var divID = "user-" + userSlug;
-    var userDiv = $('<div/>', { id: divID});
-    $.ajax({
-      type: "GET",
-      dataType: "json",
-      url: userLocalLink,
-      success: function(user){
-        for (var i = 0; i < user.shows.length; i++) {
-          var userShowData = user.shows[i];
-          var showLocalLink = "/shows/" + userShowData.slug
-          // userDiv.append("<p><a href='" + showLocalLink + "'>" + userShowData.title + "</a></p>");
-          var showImage = userShowData.url;
-          userDiv.append("<a href='" + showLocalLink + "'><img class='poster' src='" + showImage + "'></a>");
-          $('.showUser').append(userDiv);
-        }
-      }
     });
   }
 
