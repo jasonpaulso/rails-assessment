@@ -1,5 +1,5 @@
 <div class="content index-highlight">
-<h1>Welcome to the TV Tracker<%=current_user.name if user_signed_in?%>!</h1>
+<h1>Welcome to the TV Tracker<%=" " + current_user.name if user_signed_in?%>!</h1>
 <h3>Today's Most Recent Show: </h3>
 <div class="showsShow content-highlight" data-id="<%=@show.slug%>"></div>
 </div>
