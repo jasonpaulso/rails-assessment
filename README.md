@@ -1,5 +1,8 @@
 # TV Tracker
  An app for collecting your favorite TV shows.
+ 
+ This app is built on Rails, utilizing Bootstrap, JavaScript, and jQuery for the front-end.
+ 
 #Instructions
 <ul>
 <li>Clone the repo to your local environment.</li>
